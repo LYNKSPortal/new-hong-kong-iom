@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --brand-red:#B92F37; --brand-red-dark:#772428; --brand-red-muted:#956247; --brand-black:#000; --brand-charcoal:#030404; --brand-white:#fff; --brand-off-white:#FCFDFD; --brand-neutral:#E7E2D2; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--brand-off-white); color: var(--brand-black); }
+::selection { background: var(--brand-red); color: white; }
+@layer base { a, button, input, textarea, select { @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2; } }
+@layer components { .shell { @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12; } .eyebrow { @apply font-display text-sm font-medium uppercase tracking-[0.2em] text-brand-red; } .display { @apply font-display uppercase tracking-[-0.035em]; } .pill { @apply inline-flex items-center rounded-full border border-brand-neutral px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]; } .link-arrow { @apply inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-brand-red; } }

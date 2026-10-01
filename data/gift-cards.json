@@ -1,0 +1,81 @@
+[
+  {
+    "value": 50,
+    "recipientName": "Kate Corlett",
+    "recipientEmail": "kate.c@example.com",
+    "purchaserName": "Tom Corlett",
+    "message": "Happy Birthday!",
+    "id": "093867cf-c5d5-4f63-bbba-ae854e29f52a",
+    "code": "NHK-DB5B-11E2",
+    "status": "redeemed",
+    "createdAt": "2026-08-12T09:46:23.084Z",
+    "redeemedAt": "2026-08-12T09:46:30.939Z"
+  },
+  {
+    "value": 50,
+    "recipientName": "Grace Callin",
+    "recipientEmail": "grace.c@example.com",
+    "purchaserName": "Ian Callin",
+    "message": "Happy anniversary!",
+    "purchaserEmail": "ian.c@example.com",
+    "id": "0fe6a1f2-caa8-4faa-9261-15809c289ecd",
+    "code": "NHK-736C-F4FC",
+    "status": "redeemed",
+    "createdAt": "2026-08-12T09:52:04.905Z",
+    "redeemedAt": "2026-08-12T09:55:52.010Z"
+  },
+  {
+    "value": 30,
+    "recipientName": "Owen Cain",
+    "recipientEmail": "owen.c@example.com",
+    "purchaserName": "Lucy Cain",
+    "purchaserEmail": "lucy.c@example.com",
+    "id": "9011059d-4c4a-4335-bd41-ec1a4451dee7",
+    "code": "NHK-855B-C155",
+    "status": "active",
+    "createdAt": "2026-08-12T09:59:13.039Z"
+  },
+  {
+    "value": 40,
+    "recipientName": "Ella Moore",
+    "recipientEmail": "ella.m@example.com",
+    "id": "98f81c7e-d1d5-49a1-8565-928552e53519",
+    "code": "NHK-9BCC-6A04",
+    "status": "active",
+    "createdAt": "2026-08-12T09:59:13.162Z"
+  },
+  {
+    "value": 25,
+    "recipientName": "Freya Cashin",
+    "recipientEmail": "freya.cashin@example.com",
+    "purchaserName": "Ben Cashin",
+    "message": "Enjoy your date night!",
+    "purchaserEmail": "ben.cashin@example.com",
+    "id": "d2866372-fafc-4f4e-a558-c04bf5cfa11b",
+    "code": "NHK-21F0-88A6",
+    "status": "active",
+    "createdAt": "2026-08-12T10:02:12.427Z"
+  },
+  {
+    "value": 75,
+    "recipientName": "Noah Kelly",
+    "recipientEmail": "noah.kelly@example.com",
+    "purchaserName": "Grace Kelly",
+    "id": "a3a32417-c78b-4c4f-b1a4-e6735d3739ca",
+    "code": "NHK-8BF9-FB05",
+    "status": "cancelled",
+    "createdAt": "2026-08-12T10:02:12.544Z"
+  },
+  {
+    "value": 100,
+    "recipientName": "Isla Christian",
+    "recipientEmail": "isla.c@example.com",
+    "purchaserName": "Jack Christian",
+    "message": "Congratulations on the new job!",
+    "purchaserEmail": "jack.c@example.com",
+    "id": "f078e199-8143-4d84-bb30-a3469e78beb5",
+    "code": "NHK-B5C8-DB9B",
+    "status": "pending",
+    "createdAt": "2026-08-12T10:02:12.684Z"
+  }
+]

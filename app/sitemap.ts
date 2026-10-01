@@ -1,0 +1,1 @@
+import type { MetadataRoute } from "next";export default function sitemap():MetadataRoute.Sitemap{return["","/menus","/booking","/reviews","/gift-cards"].map(path=>({url:`https://newhongkong.im${path}`,lastModified:new Date(),changeFrequency:"weekly",priority:path===""?1:.7}));}
