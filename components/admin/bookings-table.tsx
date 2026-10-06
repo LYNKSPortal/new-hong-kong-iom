@@ -44,38 +44,38 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
               </p>
             ) : (
               <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[.04]">
-                <table className="w-full table-fixed text-left text-sm text-white">
+                <table className="w-full min-w-[960px] text-left text-sm text-white">
                   <thead className="border-b border-white/10 bg-white/[.03] text-xs uppercase tracking-wider text-white/40">
                     <tr>
-                      <th className="w-[13%] px-5 py-4">Guest</th>
-                      <th className="w-[18%] px-5 py-4">Email</th>
-                      <th className="w-[12%] px-5 py-4">Phone</th>
-                      <th className="w-[9%] px-5 py-4">Party</th>
-                      <th className="w-[9%] px-5 py-4">Date</th>
-                      <th className="w-[7%] px-5 py-4">Time</th>
-                      <th className="w-[20%] px-5 py-4">Notes</th>
-                      <th className="w-[12%] px-5 py-4">Actions</th>
+                      <th className="whitespace-nowrap px-5 py-4">Guest</th>
+                      <th className="whitespace-nowrap px-5 py-4">Email</th>
+                      <th className="whitespace-nowrap px-5 py-4">Phone</th>
+                      <th className="whitespace-nowrap px-5 py-4">Party</th>
+                      <th className="whitespace-nowrap px-5 py-4">Date</th>
+                      <th className="whitespace-nowrap px-5 py-4">Time</th>
+                      <th className="w-full px-5 py-4">Notes</th>
+                      <th className="whitespace-nowrap px-5 py-4">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {group.map((booking) => (
                       <tr key={booking.id} className="border-b border-white/10 last:border-0">
-                        <td className="truncate px-5 py-4 font-semibold">{booking.name}</td>
-                        <td className="truncate px-5 py-4 text-white/70">{booking.email}</td>
-                        <td className="truncate px-5 py-4 text-white/70">{booking.phone}</td>
-                        <td className="px-5 py-4">
+                        <td className="max-w-[160px] truncate px-5 py-4 font-semibold">{booking.name}</td>
+                        <td className="max-w-[200px] truncate px-5 py-4 text-white/70">{booking.email}</td>
+                        <td className="whitespace-nowrap px-5 py-4 text-white/70">{booking.phone}</td>
+                        <td className="whitespace-nowrap px-5 py-4">
                           {booking.guests} guest{booking.guests !== 1 ? "s" : ""}
                         </td>
-                        <td className="px-5 py-4">{booking.date}</td>
-                        <td className="px-5 py-4">{booking.time}</td>
-                        <td className="px-5 py-4 text-white/50">
+                        <td className="whitespace-nowrap px-5 py-4">{booking.date}</td>
+                        <td className="whitespace-nowrap px-5 py-4">{booking.time}</td>
+                        <td className="min-w-[220px] px-5 py-4 text-white/50">
                           <p className="truncate">{booking.notes || "—"}</p>
                           {booking.adminNotes && (
                             <p className="mt-1 truncate text-xs text-white/40">Reply sent: “{booking.adminNotes}”</p>
                           )}
                         </td>
                         <td className="px-5 py-4">
-                          <div className="flex gap-2">
+                          <div className="flex gap-2 whitespace-nowrap">
                             <button
                               disabled={booking.status === "approved"}
                               onClick={() => setPendingAction({ booking, status: "approved" })}

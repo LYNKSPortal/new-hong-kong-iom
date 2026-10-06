@@ -4,3 +4,5 @@ node_modules
 data/sessions.json
 .neon
 tsconfig.tsbuildinfo
+.vercel
+.env*

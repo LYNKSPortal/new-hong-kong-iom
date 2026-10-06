@@ -76,39 +76,39 @@ export function GiftCardsTable({ giftCards }: { giftCards: GiftCard[] }) {
                   </p>
                 ) : (
                   <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[.04]">
-                    <table className="w-full table-fixed text-left text-sm text-white">
+                    <table className="w-full min-w-[920px] text-left text-sm text-white">
                       <thead className="border-b border-white/10 bg-white/[.03] text-xs uppercase tracking-wider text-white/40">
                         <tr>
-                          <th className="w-[12%] px-5 py-4">Code</th>
-                          <th className="w-[12%] px-5 py-4">Balance</th>
-                          <th className="w-[14%] px-5 py-4">Recipient</th>
-                          <th className="w-[17%] px-5 py-4">Recipient Email</th>
-                          <th className="w-[11%] px-5 py-4">Purchaser</th>
-                          <th className="w-[9%] px-5 py-4">Status</th>
-                          <th className="w-[25%] px-5 py-4">Actions</th>
+                          <th className="whitespace-nowrap px-5 py-4">Code</th>
+                          <th className="whitespace-nowrap px-5 py-4">Balance</th>
+                          <th className="whitespace-nowrap px-5 py-4">Recipient</th>
+                          <th className="w-full px-5 py-4">Recipient Email</th>
+                          <th className="whitespace-nowrap px-5 py-4">Purchaser</th>
+                          <th className="whitespace-nowrap px-5 py-4">Status</th>
+                          <th className="whitespace-nowrap px-5 py-4">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         {group.map((card) => (
                           <tr key={card.id} className="border-b border-white/10 last:border-0">
-                            <td className="truncate px-5 py-4 font-mono font-semibold">{card.code}</td>
-                            <td className="px-5 py-4">
+                            <td className="whitespace-nowrap px-5 py-4 font-mono font-semibold">{card.code}</td>
+                            <td className="whitespace-nowrap px-5 py-4">
                               £{card.balance.toFixed(2)}
                               {card.balance < card.value && (
                                 <span className="block text-xs text-white/40">of £{card.value.toFixed(2)}</span>
                               )}
                             </td>
-                            <td className="truncate px-5 py-4">{card.recipientName}</td>
-                            <td className="truncate px-5 py-4 text-white/70">{card.recipientEmail}</td>
-                            <td className="truncate px-5 py-4 text-white/70">{card.purchaserName || "—"}</td>
-                            <td className="px-5 py-4">
+                            <td className="max-w-[160px] truncate px-5 py-4">{card.recipientName}</td>
+                            <td className="min-w-[200px] max-w-[260px] truncate px-5 py-4 text-white/70">{card.recipientEmail}</td>
+                            <td className="max-w-[140px] truncate px-5 py-4 text-white/70">{card.purchaserName || "—"}</td>
+                            <td className="whitespace-nowrap px-5 py-4">
                               <span className={`rounded-full px-3 py-1 text-xs font-bold uppercase ${statusStyles[card.status]}`}>
                                 {card.status}
                               </span>
                             </td>
                             <td className="px-5 py-4">
                               {card.status === "pending" && (
-                                <div className="flex gap-2">
+                                <div className="flex gap-2 whitespace-nowrap">
                                   <button
                                     disabled={updating === card.id}
                                     onClick={() => updateStatus(card.id, "active")}
@@ -126,7 +126,7 @@ export function GiftCardsTable({ giftCards }: { giftCards: GiftCard[] }) {
                                 </div>
                               )}
                               {card.status === "active" && (
-                                <div className="flex gap-2">
+                                <div className="flex gap-2 whitespace-nowrap">
                                   <button
                                     disabled={updating === card.id}
                                     onClick={() => setRedeeming(card)}
