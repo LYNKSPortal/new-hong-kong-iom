@@ -1,6 +1,5 @@
-import fs from "fs";
-import path from "path";
 import crypto from "crypto";
+import { pool } from "@/lib/db";
 
 export type BookingStatus = "pending" | "approved" | "declined";
 
@@ -19,49 +18,70 @@ export type Booking = {
   respondedAt?: string;
 };
 
-const filePath = path.join(process.cwd(), "data", "bookings.json");
+type BookingRow = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  guests: number;
+  date: string;
+  time: string;
+  notes: string | null;
+  status: BookingStatus;
+  created_at: Date;
+  admin_notes: string | null;
+  responded_at: Date | null;
+};
 
-function readAll(): Booking[] {
-  try {
-    const raw = fs.readFileSync(filePath, "utf-8");
-    return JSON.parse(raw) as Booking[];
-  } catch {
-    return [];
-  }
-}
-
-function writeAll(bookings: Booking[]) {
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(bookings, null, 2));
-}
-
-export function getBookings(): Booking[] {
-  return readAll().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-}
-
-export function addBooking(input: Omit<Booking, "id" | "status" | "createdAt">): Booking {
-  const bookings = readAll();
-  const booking: Booking = {
-    ...input,
-    id: crypto.randomUUID(),
-    status: "pending",
-    createdAt: new Date().toISOString(),
+function rowToBooking(row: BookingRow): Booking {
+  return {
+    id: row.id,
+    name: row.name,
+    email: row.email,
+    phone: row.phone,
+    guests: row.guests,
+    date: row.date,
+    time: row.time,
+    notes: row.notes ?? undefined,
+    status: row.status,
+    createdAt: row.created_at.toISOString(),
+    adminNotes: row.admin_notes ?? undefined,
+    respondedAt: row.responded_at ? row.responded_at.toISOString() : undefined,
   };
-  bookings.push(booking);
-  writeAll(bookings);
-  return booking;
 }
 
-export function updateBookingStatus(id: string, status: BookingStatus, adminNotes?: string): Booking | null {
-  const bookings = readAll();
-  const index = bookings.findIndex((b) => b.id === id);
-  if (index === -1) return null;
-  bookings[index] = {
-    ...bookings[index],
-    status,
-    adminNotes: adminNotes !== undefined ? adminNotes : bookings[index].adminNotes,
-    respondedAt: new Date().toISOString(),
-  };
-  writeAll(bookings);
-  return bookings[index];
+export async function getBookings(): Promise<Booking[]> {
+  const { rows } = await pool.query<BookingRow>(
+    "SELECT * FROM bookings ORDER BY created_at DESC"
+  );
+  return rows.map(rowToBooking);
+}
+
+export async function addBooking(
+  input: Omit<Booking, "id" | "status" | "createdAt">
+): Promise<Booking> {
+  const { rows } = await pool.query<BookingRow>(
+    `INSERT INTO bookings (id, name, email, phone, guests, date, time, notes, status, created_at)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'pending', now())
+     RETURNING *`,
+    [crypto.randomUUID(), input.name, input.email, input.phone, input.guests, input.date, input.time, input.notes ?? null]
+  );
+  return rowToBooking(rows[0]);
+}
+
+export async function updateBookingStatus(
+  id: string,
+  status: BookingStatus,
+  adminNotes?: string
+): Promise<Booking | null> {
+  const { rows } = await pool.query<BookingRow>(
+    `UPDATE bookings
+     SET status = $2,
+         admin_notes = COALESCE($3, admin_notes),
+         responded_at = now()
+     WHERE id = $1
+     RETURNING *`,
+    [id, status, adminNotes ?? null]
+  );
+  return rows[0] ? rowToBooking(rows[0]) : null;
 }

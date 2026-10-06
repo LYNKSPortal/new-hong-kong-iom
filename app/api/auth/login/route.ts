@@ -2,11 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { COOKIE_NAME, SESSION_TTL_MS, createSession, verifyCredentials } from "@/lib/auth";
 
 export async function POST(req: NextRequest) {
-  const { username, password } = await req.json();
-  if (typeof username !== "string" || typeof password !== "string" || !verifyCredentials(username, password)) {
-    return NextResponse.json({ error: "Invalid username or password" }, { status: 401 });
+  const { email, password } = await req.json();
+  if (typeof email !== "string" || typeof password !== "string") {
+    return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
   }
-  const token = createSession();
+  const user = await verifyCredentials(email, password);
+  if (!user) {
+    return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
+  }
+  const token = await createSession(user.id);
   const res = NextResponse.json({ success: true });
   res.cookies.set(COOKIE_NAME, token, {
     httpOnly: true,

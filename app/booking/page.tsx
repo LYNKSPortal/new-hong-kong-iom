@@ -45,13 +45,14 @@ export default function Booking() {
               <span>{restaurant.hours.map((x) => <span key={x} className="block">{x}</span>)}</span>
             </p>
           </div>
-          <div className="mt-8 min-h-64 rounded-2xl bg-brand-neutral p-6">
-            <p className="pill bg-white">Map</p>
-            <p className="mt-24 font-display text-3xl uppercase">
-              35 Castle Street
-              <br />
-              Douglas, IM1 2HA
-            </p>
+          <div className="mt-8 overflow-hidden rounded-2xl bg-brand-neutral">
+            <iframe
+              title="Map showing New Hong Kong at 35 Castle Street, Douglas, Isle of Man, IM1 2HA"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(restaurant.address.join(", "))}&output=embed`}
+              className="h-64 w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
         <BookingForm />

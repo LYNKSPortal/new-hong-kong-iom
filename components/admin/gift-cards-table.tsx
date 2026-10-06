@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
 import type { GiftCard, GiftCardStatus } from "@/lib/gift-cards";
 import { GiftCardModal } from "@/components/admin/gift-card-modal";
+import { RedeemGiftCardModal } from "@/components/admin/redeem-gift-card-modal";
 
 const statusStyles: Record<GiftCardStatus, string> = {
   pending: "bg-yellow-400/15 text-yellow-300",
@@ -28,6 +29,7 @@ export function GiftCardsTable({ giftCards }: { giftCards: GiftCard[] }) {
   const router = useRouter();
   const [showCreate, setShowCreate] = useState(false);
   const [updating, setUpdating] = useState<string | null>(null);
+  const [redeeming, setRedeeming] = useState<GiftCard | null>(null);
 
   async function updateStatus(id: string, status: GiftCardStatus) {
     setUpdating(id);
@@ -77,20 +79,25 @@ export function GiftCardsTable({ giftCards }: { giftCards: GiftCard[] }) {
                     <table className="w-full table-fixed text-left text-sm text-white">
                       <thead className="border-b border-white/10 bg-white/[.03] text-xs uppercase tracking-wider text-white/40">
                         <tr>
-                          <th className="w-[14%] px-5 py-4">Code</th>
-                          <th className="w-[9%] px-5 py-4">Value</th>
-                          <th className="w-[16%] px-5 py-4">Recipient</th>
-                          <th className="w-[19%] px-5 py-4">Recipient Email</th>
-                          <th className="w-[13%] px-5 py-4">Purchaser</th>
-                          <th className="w-[10%] px-5 py-4">Status</th>
-                          <th className="w-[19%] px-5 py-4">Actions</th>
+                          <th className="w-[12%] px-5 py-4">Code</th>
+                          <th className="w-[12%] px-5 py-4">Balance</th>
+                          <th className="w-[14%] px-5 py-4">Recipient</th>
+                          <th className="w-[17%] px-5 py-4">Recipient Email</th>
+                          <th className="w-[11%] px-5 py-4">Purchaser</th>
+                          <th className="w-[9%] px-5 py-4">Status</th>
+                          <th className="w-[25%] px-5 py-4">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         {group.map((card) => (
                           <tr key={card.id} className="border-b border-white/10 last:border-0">
                             <td className="truncate px-5 py-4 font-mono font-semibold">{card.code}</td>
-                            <td className="px-5 py-4">£{card.value.toFixed(2)}</td>
+                            <td className="px-5 py-4">
+                              £{card.balance.toFixed(2)}
+                              {card.balance < card.value && (
+                                <span className="block text-xs text-white/40">of £{card.value.toFixed(2)}</span>
+                              )}
+                            </td>
                             <td className="truncate px-5 py-4">{card.recipientName}</td>
                             <td className="truncate px-5 py-4 text-white/70">{card.recipientEmail}</td>
                             <td className="truncate px-5 py-4 text-white/70">{card.purchaserName || "—"}</td>
@@ -122,7 +129,7 @@ export function GiftCardsTable({ giftCards }: { giftCards: GiftCard[] }) {
                                 <div className="flex gap-2">
                                   <button
                                     disabled={updating === card.id}
-                                    onClick={() => updateStatus(card.id, "redeemed")}
+                                    onClick={() => setRedeeming(card)}
                                     className="rounded-full bg-green-600 px-3 py-2 text-xs font-bold uppercase text-white disabled:opacity-40"
                                   >
                                     Redeem
@@ -156,6 +163,16 @@ export function GiftCardsTable({ giftCards }: { giftCards: GiftCard[] }) {
           onClose={() => setShowCreate(false)}
           onCreated={() => {
             setShowCreate(false);
+            router.refresh();
+          }}
+        />
+      )}
+      {redeeming && (
+        <RedeemGiftCardModal
+          giftCard={redeeming}
+          onClose={() => setRedeeming(null)}
+          onRedeemed={() => {
+            setRedeeming(null);
             router.refresh();
           }}
         />

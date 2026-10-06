@@ -10,11 +10,11 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
   const token = await getSessionToken();
-  if (!isValidSession(token)) {
+  if (!(await isValidSession(token))) {
     redirect("/admin/login");
   }
 
-  const bookings = getBookings();
+  const bookings = await getBookings();
   const pendingCount = bookings.filter((b) => b.status === "pending").length;
 
   return (

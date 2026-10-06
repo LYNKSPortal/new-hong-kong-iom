@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { addBooking, getBookings } from "@/lib/bookings";
 import { getSessionToken, isValidSession } from "@/lib/auth";
+import { sendBookingReceivedEmail } from "@/lib/email";
 
 const schema = z.object({
   guests: z.coerce.number().min(1).max(20),
@@ -19,14 +20,15 @@ export async function POST(req: NextRequest) {
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid booking details" }, { status: 400 });
   }
-  const booking = addBooking(parsed.data);
+  const booking = await addBooking(parsed.data);
+  await sendBookingReceivedEmail(booking);
   return NextResponse.json({ booking }, { status: 201 });
 }
 
 export async function GET() {
   const token = await getSessionToken();
-  if (!isValidSession(token)) {
+  if (!(await isValidSession(token))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  return NextResponse.json({ bookings: getBookings() });
+  return NextResponse.json({ bookings: await getBookings() });
 }

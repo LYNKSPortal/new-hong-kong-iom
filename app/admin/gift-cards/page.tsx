@@ -10,11 +10,11 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminGiftCards() {
   const token = await getSessionToken();
-  if (!isValidSession(token)) {
+  if (!(await isValidSession(token))) {
     redirect("/admin/login");
   }
 
-  const giftCards = getGiftCards();
+  const giftCards = await getGiftCards();
   const pendingCount = giftCards.filter((g) => g.status === "pending").length;
 
   return (

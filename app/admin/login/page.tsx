@@ -1,5 +1,6 @@
 "use client";
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function AdminLogin() {
@@ -15,11 +16,11 @@ export default function AdminLogin() {
     const res = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: form.get("username"), password: form.get("password") }),
+      body: JSON.stringify({ email: form.get("email"), password: form.get("password") }),
     });
     setLoading(false);
     if (!res.ok) {
-      setError("Invalid username or password");
+      setError("Invalid email or password");
       return;
     }
     router.push("/admin");
@@ -33,11 +34,12 @@ export default function AdminLogin() {
         <h1 className="display mt-2 text-4xl uppercase">Admin Login</h1>
         <div className="mt-8 space-y-4">
           <label className="block text-sm font-semibold">
-            Username
+            Email
             <input
-              name="username"
+              name="email"
+              type="email"
               required
-              autoComplete="username"
+              autoComplete="email"
               className="mt-2 w-full rounded-xl border border-brand-neutral px-4 py-3 text-sm outline-none focus:border-brand-red"
             />
           </label>
@@ -60,6 +62,12 @@ export default function AdminLogin() {
         >
           {loading ? "Signing in..." : "Sign in"}
         </button>
+        <Link
+          href="/admin/forgot-password"
+          className="mt-5 block text-center text-xs font-semibold text-black/50 underline hover:text-black"
+        >
+          Forgot password?
+        </Link>
       </form>
     </main>
   );

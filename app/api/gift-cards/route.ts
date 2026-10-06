@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { addGiftCard, getGiftCards } from "@/lib/gift-cards";
 import { getSessionToken, isValidSession } from "@/lib/auth";
+import { sendGiftCardReceivedEmail } from "@/lib/email";
 
 const schema = z.object({
   value: z.coerce.number().min(1).max(1000),
@@ -14,10 +15,10 @@ const schema = z.object({
 
 export async function GET() {
   const token = await getSessionToken();
-  if (!isValidSession(token)) {
+  if (!(await isValidSession(token))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  return NextResponse.json({ giftCards: getGiftCards() });
+  return NextResponse.json({ giftCards: await getGiftCards() });
 }
 
 export async function POST(req: NextRequest) {
@@ -27,8 +28,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid gift card details" }, { status: 400 });
   }
   const token = await getSessionToken();
-  const isAdmin = isValidSession(token);
+  const isAdmin = await isValidSession(token);
   const { purchaserEmail, ...rest } = parsed.data;
-  const giftCard = addGiftCard({ ...rest, purchaserEmail: purchaserEmail || undefined }, isAdmin ? "active" : "pending");
+  const giftCard = await addGiftCard({ ...rest, purchaserEmail: purchaserEmail || undefined }, isAdmin ? "active" : "pending");
+  await sendGiftCardReceivedEmail(giftCard);
   return NextResponse.json({ giftCard }, { status: 201 });
 }
