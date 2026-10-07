@@ -1,7 +1,12 @@
 import { mainMenu } from "@/data/site";
 import { PageHero } from "@/components/sections/shared";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Main Menu" };
+export const metadata = pageMetadata({
+  title: "Main Menu",
+  description: "View the full Main Menu at New Hong Kong, Douglas — dim sum, wok-fired classics, seafood, chef specials and more.",
+  path: "/menus/main-menu",
+});
 
 export default function MainMenu() {
   return (
@@ -11,6 +16,7 @@ export default function MainMenu() {
         title={mainMenu.title}
         copy="The dishes we are known for, from dim sum to wok-fired signatures."
         image="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85"
+        imageAlt="A selection of dishes from the New Hong Kong main menu"
       />
       <section className="shell py-24">
         <div className="grid gap-16 md:grid-cols-2">

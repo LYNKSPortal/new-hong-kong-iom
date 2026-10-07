@@ -1,7 +1,12 @@
 import { lunchDrinksMenu } from "@/data/site";
 import { PageHero } from "@/components/sections/shared";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Lunch & Drinks Menu" };
+export const metadata = pageMetadata({
+  title: "Lunch & Drinks Menu",
+  description: "View the Lunch & Drinks menu at New Hong Kong, Douglas — easy afternoon classics, noodle dishes, rice dishes, steamed buns, teas and more.",
+  path: "/menus/lunch-drinks",
+});
 
 export default function LunchDrinksMenu() {
   return (
@@ -11,6 +16,7 @@ export default function LunchDrinksMenu() {
         title={lunchDrinksMenu.title}
         copy="Easy afternoons, bright plates and a considered drinks list."
         image="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85"
+        imageAlt="A selection of lunch dishes and drinks at New Hong Kong"
       />
       <section className="shell py-24">
         <div className="grid gap-16 md:grid-cols-2">

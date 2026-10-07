@@ -2,8 +2,13 @@ import { Clock3, MapPin, Phone } from "lucide-react";
 import { BookingForm } from "@/components/forms/booking-form";
 import { PageHero } from "@/components/sections/shared";
 import { restaurant } from "@/data/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Book a Table" };
+export const metadata = pageMetadata({
+  title: "Book a Table",
+  description: "Reserve your table at New Hong Kong, 35 Castle Street, Douglas. Online booking requests confirmed personally by our team.",
+  path: "/booking",
+});
 
 export default function Booking() {
   return (
@@ -13,6 +18,7 @@ export default function Booking() {
         title="Your table awaits."
         copy="Tell us when you would like to join us and our team will be in touch to confirm your booking."
         image="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=85"
+        imageAlt="A table set for dinner at New Hong Kong"
       />
       <section className="shell grid gap-12 py-24 lg:grid-cols-[.72fr_1.28fr]">
         <div>
