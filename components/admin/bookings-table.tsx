@@ -15,8 +15,8 @@ const statusStyles: Record<BookingStatus, string> = {
 
 const groupOrder: { status: BookingStatus; title: string }[] = [
   { status: "pending", title: "Pending" },
-  { status: "declined", title: "Declined" },
   { status: "approved", title: "Approved" },
+  { status: "declined", title: "Declined" },
 ];
 
 export function BookingsTable({ bookings }: { bookings: Booking[] }) {

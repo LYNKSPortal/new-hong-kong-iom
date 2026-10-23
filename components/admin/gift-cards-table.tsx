@@ -15,8 +15,8 @@ const statusStyles: Record<GiftCardStatus, string> = {
 
 const groupOrder: { key: "pending" | "declined" | "approved"; title: string; match: (status: GiftCardStatus) => boolean }[] = [
   { key: "pending", title: "Pending", match: (s) => s === "pending" },
-  { key: "declined", title: "Declined", match: (s) => s === "cancelled" },
   { key: "approved", title: "Approved", match: (s) => s === "active" || s === "redeemed" },
+  { key: "declined", title: "Declined", match: (s) => s === "cancelled" },
 ];
 
 const groupBadgeStyles: Record<string, string> = {
