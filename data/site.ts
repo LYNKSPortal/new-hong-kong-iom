@@ -44,6 +44,17 @@ export function getTimeSlotOptions(dayOfWeek: number): TimeSlotOption[] {
   return allSlotsFor(dayOfWeek).map((time) => ({ time, available: !BLOCKED_TIMES.includes(time) }));
 }
 
+/** Returns whether a given time on a given day falls in the lunch or dinner sitting (for display only). */
+export function getSessionLabel(dayOfWeek: number, time: string): "Lunch" | "Dinner" | null {
+  const hours = openingHours[dayOfWeek];
+  if (!hours || !time) return null;
+  const toMinutes = (t: string) => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+  const t = toMinutes(time);
+  if (hours.lunch && t >= toMinutes(hours.lunch[0]) && t < toMinutes(hours.lunch[1])) return "Lunch";
+  if (t >= toMinutes(hours.dinner[0]) && t < toMinutes(hours.dinner[1])) return "Dinner";
+  return null;
+}
+
 export const nav = [{ href: "/", label: "Home" }, { href: "/menus", label: "Menus" }, { href: "/reviews", label: "Reviews" }, { href: "/gift-cards", label: "Gift Cards" }];
 
 export const dishes = [
