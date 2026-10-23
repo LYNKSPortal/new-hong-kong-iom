@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import type { Booking, BookingStatus } from "@/lib/bookings";
+import { formatDateDMY } from "@/lib/format";
 
 type ResponseAction = { booking: Booking; status: Extract<BookingStatus, "approved" | "declined"> };
 
@@ -38,7 +39,7 @@ export function ResponseModal({
             <p className="eyebrow text-white/60">{isApprove ? "Approve" : "Decline"} booking</p>
             <h3 className="display mt-2 text-3xl uppercase">{action.booking.name}</h3>
             <p className="mt-1 text-sm text-white/50">
-              {action.booking.date} · {action.booking.time} · {action.booking.guests} guest
+              {formatDateDMY(action.booking.date)} · {action.booking.time} · {action.booking.guests} guest
               {action.booking.guests !== 1 ? "s" : ""}
             </p>
           </div>

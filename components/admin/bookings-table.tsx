@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Booking, BookingStatus } from "@/lib/bookings";
 import { ResponseModal } from "@/components/admin/response-modal";
+import { formatDateDMY } from "@/lib/format";
 
 type PendingAction = { booking: Booking; status: Extract<BookingStatus, "approved" | "declined"> };
 
@@ -66,7 +67,7 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
                         <td className="whitespace-nowrap px-5 py-4">
                           {booking.guests} guest{booking.guests !== 1 ? "s" : ""}
                         </td>
-                        <td className="whitespace-nowrap px-5 py-4">{booking.date}</td>
+                        <td className="whitespace-nowrap px-5 py-4">{formatDateDMY(booking.date)}</td>
                         <td className="whitespace-nowrap px-5 py-4">{booking.time}</td>
                         <td className="min-w-[220px] px-5 py-4 text-white/50">
                           <p className="truncate">{booking.notes || "—"}</p>
