@@ -21,7 +21,7 @@ export default function Booking() {
         imageAlt="A table set for dinner at New Hong Kong"
       />
       <section className="shell grid gap-12 py-24 lg:grid-cols-[.72fr_1.28fr]">
-        <div>
+        <div className="order-2 lg:order-1">
           <p className="eyebrow">Good to know</p>
           <h2 className="display mt-3 text-5xl uppercase">A relaxed evening starts here.</h2>
           <div className="mt-8 space-y-5 text-sm leading-6 text-black/65">
@@ -61,7 +61,9 @@ export default function Booking() {
             />
           </div>
         </div>
-        <BookingForm />
+        <div className="order-1 lg:order-2">
+          <BookingForm />
+        </div>
       </section>
     </main>
   );
