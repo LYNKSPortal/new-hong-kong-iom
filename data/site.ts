@@ -1,4 +1,33 @@
-export const restaurant = { name: "New Hong Kong", subtitle: "Asian Food Bar", phone: "+44 1624 621059", phoneHref: "tel:+441624621059", address: ["35 Castle Street", "Douglas", "Isle of Man", "IM1 2HA"], hours: ["Monday – Thursday · 12:00 – 22:30", "Friday – Saturday · 12:00 – 23:00", "Sunday · Closed"] };
+export const restaurant = { name: "New Hong Kong", subtitle: "Asian Food Bar", phone: "+44 1624 621059", phoneHref: "tel:+441624621059", address: ["35 Castle Street", "Douglas", "Isle of Man", "IM1 2HA"], hours: ["Monday – Tuesday · 17:00 – 22:00", "Wednesday · 17:00 – 22:30", "Thursday · 12:00 – 14:00 & 17:00 – 22:30", "Friday – Saturday · 12:00 – 14:00 & 17:00 – 23:00", "Sunday · Closed"] };
+
+// Opening hours by day of week (0 = Sunday … 6 = Saturday), used to drive bookable time slots.
+export type DayHours = { lunch?: [string, string]; dinner: [string, string] } | null;
+export const openingHours: Record<number, DayHours> = {
+  0: null, // Sunday - closed
+  1: { dinner: ["17:00", "22:00"] }, // Monday
+  2: { dinner: ["17:00", "22:00"] }, // Tuesday
+  3: { dinner: ["17:00", "22:30"] }, // Wednesday
+  4: { lunch: ["12:00", "14:00"], dinner: ["17:00", "22:30"] }, // Thursday
+  5: { lunch: ["12:00", "14:00"], dinner: ["17:00", "23:00"] }, // Friday
+  6: { lunch: ["12:00", "14:00"], dinner: ["17:00", "23:00"] }, // Saturday
+};
+
+function timeSlotsFor([open, close]: [string, string], stepMinutes = 30, lastSlotBufferMinutes = 30): string[] {
+  const toMinutes = (t: string) => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+  const toTime = (mins: number) => `${String(Math.floor(mins / 60)).padStart(2, "0")}:${String(mins % 60).padStart(2, "0")}`;
+  const slots: string[] = [];
+  for (let m = toMinutes(open); m <= toMinutes(close) - lastSlotBufferMinutes; m += stepMinutes) {
+    slots.push(toTime(m));
+  }
+  return slots;
+}
+
+/** Returns the bookable time slots for a given day of week (0 = Sunday … 6 = Saturday). */
+export function getAvailableTimeSlots(dayOfWeek: number): string[] {
+  const hours = openingHours[dayOfWeek];
+  if (!hours) return [];
+  return [...(hours.lunch ? timeSlotsFor(hours.lunch) : []), ...timeSlotsFor(hours.dinner)];
+}
 
 export const nav = [{ href: "/", label: "Home" }, { href: "/menus", label: "Menus" }, { href: "/reviews", label: "Reviews" }, { href: "/gift-cards", label: "Gift Cards" }];
 
