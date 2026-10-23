@@ -30,7 +30,9 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
   return (
     <div className="space-y-10">
       {groupOrder.map(({ status, title }) => {
-        const group = bookings.filter((b) => b.status === status);
+        const group = bookings
+          .filter((b) => b.status === status)
+          .sort((a, b) => `${a.date}T${a.time}`.localeCompare(`${b.date}T${b.time}`));
         return (
           <div key={status}>
             <div className="mb-3 flex items-center gap-3">
