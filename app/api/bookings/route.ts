@@ -7,7 +7,7 @@ import { getAvailableTimeSlots } from "@/data/site";
 
 const schema = z
   .object({
-    guests: z.coerce.number().min(1).max(20),
+    guests: z.coerce.number().min(1).max(6),
     date: z.string().min(1),
     time: z.string().min(1),
     name: z.string().min(2),

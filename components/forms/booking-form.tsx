@@ -8,7 +8,7 @@ import { getAvailableTimeSlots } from "@/data/site";
 
 const schema = z
   .object({
-    guests: z.coerce.number().min(1, "Select party size").max(20),
+    guests: z.coerce.number().min(1, "Select party size").max(6, "For parties larger than 6, please call us"),
     date: z.string().min(1, "Choose a date"),
     time: z.string().min(1, "Choose a time"),
     name: z.string().min(2, "Enter your name"),
@@ -41,7 +41,6 @@ export function BookingForm() {
     formState: { errors, isSubmitting },
   } = useForm<Values>({ resolver: zodResolver(schema), defaultValues: { guests: 2 } });
 
-  const guests = watch("guests");
   const date = watch("date");
   const dayOfWeek = date ? new Date(`${date}T12:00:00`).getDay() : null;
   const availableTimes = dayOfWeek !== null ? getAvailableTimeSlots(dayOfWeek) : [];
@@ -79,7 +78,7 @@ export function BookingForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <Label label="Guests" error={errors.guests?.message}>
           <select {...register("guests")} className={fields}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((x) => (
+            {[1, 2, 3, 4, 5, 6].map((x) => (
               <option key={x} value={x}>
                 {x} guest{x !== 1 ? "s" : ""}
               </option>
@@ -115,15 +114,13 @@ export function BookingForm() {
       <Label label="Notes (optional)" error={errors.notes?.message}>
         <textarea {...register("notes")} rows={4} className={`${fields} resize-y`} />
       </Label>
-      {guests >= 6 && (
-        <p className="mt-5 rounded-xl bg-brand-neutral/60 p-4 text-sm leading-6">
-          For groups of six or more, please call us on{" "}
-          <a href="tel:+441624621059" className="font-bold underline">
-            +44 1624 621059
-          </a>{" "}
-          so we can look after you properly.
-        </p>
-      )}
+      <p className="mt-5 rounded-xl bg-brand-neutral/60 p-4 text-sm leading-6">
+        Online bookings are available for up to 6 guests. For larger groups, please call us on{" "}
+        <a href="tel:+441624621059" className="font-bold underline">
+          +44 1624 621059
+        </a>{" "}
+        so we can look after you properly.
+      </p>
       <p className="mt-5 text-xs leading-5 text-black/55">
         Bookings require a minimum of four hours’ notice. We are closed on Sundays.
       </p>
