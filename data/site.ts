@@ -22,11 +22,26 @@ function timeSlotsFor([open, close]: [string, string], stepMinutes = 30, lastSlo
   return slots;
 }
 
-/** Returns the bookable time slots for a given day of week (0 = Sunday … 6 = Saturday). */
-export function getAvailableTimeSlots(dayOfWeek: number): string[] {
+// Times that are always treated as fully booked, regardless of day, so they can't be
+// requested online. 18:30 gets disproportionately picked out of habit by customers.
+export const BLOCKED_TIMES = ["18:30"];
+
+function allSlotsFor(dayOfWeek: number): string[] {
   const hours = openingHours[dayOfWeek];
   if (!hours) return [];
   return [...(hours.lunch ? timeSlotsFor(hours.lunch) : []), ...timeSlotsFor(hours.dinner)];
+}
+
+/** Returns the bookable (non-blocked) time slots for a given day of week (0 = Sunday … 6 = Saturday). */
+export function getAvailableTimeSlots(dayOfWeek: number): string[] {
+  return allSlotsFor(dayOfWeek).filter((t) => !BLOCKED_TIMES.includes(t));
+}
+
+export type TimeSlotOption = { time: string; available: boolean };
+
+/** Returns every slot for the day, including blocked ones, for rendering a disabled "fully booked" option. */
+export function getTimeSlotOptions(dayOfWeek: number): TimeSlotOption[] {
+  return allSlotsFor(dayOfWeek).map((time) => ({ time, available: !BLOCKED_TIMES.includes(time) }));
 }
 
 export const nav = [{ href: "/", label: "Home" }, { href: "/menus", label: "Menus" }, { href: "/reviews", label: "Reviews" }, { href: "/gift-cards", label: "Gift Cards" }];

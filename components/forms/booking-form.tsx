@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle2 } from "lucide-react";
-import { getAvailableTimeSlots } from "@/data/site";
+import { getAvailableTimeSlots, getTimeSlotOptions } from "@/data/site";
 
 const schema = z
   .object({
@@ -43,8 +43,8 @@ export function BookingForm() {
 
   const date = watch("date");
   const dayOfWeek = date ? new Date(`${date}T12:00:00`).getDay() : null;
-  const availableTimes = dayOfWeek !== null ? getAvailableTimeSlots(dayOfWeek) : [];
-  const isClosedDay = date !== "" && dayOfWeek !== null && availableTimes.length === 0;
+  const timeOptions = dayOfWeek !== null ? getTimeSlotOptions(dayOfWeek) : [];
+  const isClosedDay = date !== "" && dayOfWeek !== null && timeOptions.length === 0;
 
   if (done) {
     return (
@@ -96,8 +96,10 @@ export function BookingForm() {
         <Label label="Time" error={errors.time?.message}>
           <select {...register("time")} className={fields} disabled={date === "" || isClosedDay}>
             <option value="">{date === "" ? "Choose a date first" : isClosedDay ? "Closed on this day" : "Select a time"}</option>
-            {availableTimes.map((x) => (
-              <option key={x}>{x}</option>
+            {timeOptions.map(({ time, available }) => (
+              <option key={time} value={available ? time : ""} disabled={!available}>
+                {available ? time : `${time} — Fully booked`}
+              </option>
             ))}
           </select>
         </Label>
