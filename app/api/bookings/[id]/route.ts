@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateBookingStatus } from "@/lib/bookings";
+import { deleteBooking, updateBookingStatus } from "@/lib/bookings";
 import { getSessionToken, isValidSession } from "@/lib/auth";
 import { sendBookingStatusEmail } from "@/lib/email";
 
@@ -19,4 +19,17 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   }
   await sendBookingStatusEmail(booking);
   return NextResponse.json({ booking });
+}
+
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const token = await getSessionToken();
+  if (!(await isValidSession(token))) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  const { id } = await params;
+  const deleted = await deleteBooking(id);
+  if (!deleted) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+  return NextResponse.json({ success: true });
 }

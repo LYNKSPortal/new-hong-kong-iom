@@ -85,3 +85,8 @@ export async function updateBookingStatus(
   );
   return rows[0] ? rowToBooking(rows[0]) : null;
 }
+
+export async function deleteBooking(id: string): Promise<boolean> {
+  const { rowCount } = await pool.query("DELETE FROM bookings WHERE id = $1", [id]);
+  return (rowCount ?? 0) > 0;
+}

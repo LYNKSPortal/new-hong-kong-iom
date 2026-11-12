@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Clock, History } from "lucide-react";
+import { Clock, History, Trash2 } from "lucide-react";
 import type { Booking, BookingStatus } from "@/lib/bookings";
 import { ResponseModal } from "@/components/admin/response-modal";
+import { DeleteConfirmModal } from "@/components/admin/delete-confirm-modal";
 import { formatDateDMY } from "@/lib/format";
 
 type PendingAction = { booking: Booking; status: Extract<BookingStatus, "approved" | "declined"> };
@@ -41,6 +42,7 @@ function sortByDateTimeAsc(a: Booking, b: Booking) {
 export function BookingsTable({ bookings }: { bookings: Booking[] }) {
   const router = useRouter();
   const [pendingAction, setPendingAction] = useState<PendingAction | null>(null);
+  const [deletingBooking, setDeletingBooking] = useState<Booking | null>(null);
   const [tab, setTab] = useState<Tab>("current");
 
   if (bookings.length === 0) {
@@ -88,7 +90,7 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
                       No {title.toLowerCase()} bookings.
                     </p>
                   ) : (
-                    <BookingsTableGrid bookings={group} onAction={setPendingAction} />
+                    <BookingsTableGrid bookings={group} onAction={setPendingAction} onDelete={setDeletingBooking} />
                   )}
                 </div>
               );
@@ -111,7 +113,7 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
                 No history yet.
               </p>
             ) : (
-              <BookingsTableGrid bookings={historyBookings} onAction={setPendingAction} showStatus />
+              <BookingsTableGrid bookings={historyBookings} onAction={setPendingAction} onDelete={setDeletingBooking} showStatus />
             )}
           </div>
         )}
@@ -123,6 +125,17 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
           onClose={() => setPendingAction(null)}
           onSubmitted={() => {
             setPendingAction(null);
+            router.refresh();
+          }}
+        />
+      )}
+
+      {deletingBooking && (
+        <DeleteConfirmModal
+          booking={deletingBooking}
+          onClose={() => setDeletingBooking(null)}
+          onDeleted={() => {
+            setDeletingBooking(null);
             router.refresh();
           }}
         />
@@ -166,10 +179,12 @@ function TabButton({
 function BookingsTableGrid({
   bookings,
   onAction,
+  onDelete,
   showStatus = false,
 }: {
   bookings: Booking[];
   onAction: (action: PendingAction) => void;
+  onDelete: (booking: Booking) => void;
   showStatus?: boolean;
 }) {
   return (
@@ -227,6 +242,14 @@ function BookingsTableGrid({
                     className="rounded-full bg-brand-red px-4 py-2 text-xs font-bold uppercase text-white disabled:opacity-40"
                   >
                     Decline
+                  </button>
+                  <button
+                    onClick={() => onDelete(booking)}
+                    aria-label="Delete booking"
+                    title="Delete booking"
+                    className="flex items-center justify-center rounded-full border border-white/15 p-2 text-white/50 transition hover:border-brand-red hover:text-brand-red"
+                  >
+                    <Trash2 size={15} />
                   </button>
                 </div>
               </td>
