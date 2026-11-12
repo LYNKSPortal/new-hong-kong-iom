@@ -21,10 +21,14 @@ const groupOrder: { status: BookingStatus; title: string }[] = [
   { status: "declined", title: "Declined" },
 ];
 
-const HISTORY_CUTOFF_DAYS = 14;
+const CURRENT_WINDOW_DAYS = 14;
 
-function isHistoryBooking(booking: Booking, cutoffISO: string): boolean {
-  return booking.date < cutoffISO;
+function toISODate(d: Date): string {
+  return d.toISOString().slice(0, 10);
+}
+
+function isWithinCurrentWindow(booking: Booking, windowStartISO: string, windowEndISO: string): boolean {
+  return booking.date >= windowStartISO && booking.date <= windowEndISO;
 }
 
 function sortByDateTimeAsc(a: Booking, b: Booking) {
@@ -40,12 +44,15 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
     return <p className="text-sm text-white/50">No booking requests yet.</p>;
   }
 
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - HISTORY_CUTOFF_DAYS);
-  const cutoffISO = cutoff.toISOString().slice(0, 10);
+  const windowStartISO = toISODate(new Date());
+  const windowEnd = new Date();
+  windowEnd.setDate(windowEnd.getDate() + CURRENT_WINDOW_DAYS);
+  const windowEndISO = toISODate(windowEnd);
 
-  const currentBookings = bookings.filter((b) => !isHistoryBooking(b, cutoffISO));
-  const historyBookings = bookings.filter((b) => isHistoryBooking(b, cutoffISO)).sort((a, b) => sortByDateTimeAsc(b, a));
+  const currentBookings = bookings.filter((b) => isWithinCurrentWindow(b, windowStartISO, windowEndISO));
+  const historyBookings = bookings
+    .filter((b) => !isWithinCurrentWindow(b, windowStartISO, windowEndISO))
+    .sort((a, b) => sortByDateTimeAsc(b, a));
 
   const pendingCount = currentBookings.filter((b) => b.status === "pending").length;
 
@@ -60,7 +67,7 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
         {tab === "current" ? (
           <>
             <p className="text-xs text-white/40">
-              Bookings dated within the last {HISTORY_CUTOFF_DAYS} days, plus everything upcoming. Anything older
+              Bookings dated from today through the next {CURRENT_WINDOW_DAYS} days. Anything outside that window
               moves automatically into History.
             </p>
             {groupOrder.map(({ status, title }) => {
@@ -93,7 +100,7 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
               </span>
             </div>
             <p className="mb-5 text-xs text-white/40">
-              Bookings dated more than {HISTORY_CUTOFF_DAYS} days ago, across every status.
+              Bookings dated outside the next {CURRENT_WINDOW_DAYS} days (past or further out), across every status.
             </p>
             {historyBookings.length === 0 ? (
               <p className="rounded-2xl border border-white/10 bg-white/[.04] px-5 py-6 text-sm text-white/40">
