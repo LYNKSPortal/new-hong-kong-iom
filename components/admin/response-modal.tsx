@@ -17,16 +17,28 @@ export function ResponseModal({
 }) {
   const [note, setNote] = useState(action.booking.adminNotes ?? "");
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit() {
     setSubmitting(true);
-    await fetch(`/api/bookings/${action.booking.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: action.status, note }),
-    });
-    setSubmitting(false);
-    onSubmitted();
+    setError("");
+    try {
+      const res = await fetch(`/api/bookings/${action.booking.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: action.status, note }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        setError(data?.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      onSubmitted();
+    } catch {
+      setError("Something went wrong. Please check your connection and try again.");
+      setSubmitting(false);
+    }
   }
 
   const isApprove = action.status === "approved";
@@ -62,6 +74,7 @@ export function ResponseModal({
           />
         </label>
         <p className="mt-2 text-xs text-white/40">This note will be sent to the customer along with the status update.</p>
+        {error && <p className="mt-3 text-sm font-semibold text-brand-red">{error}</p>}
         <div className="mt-6 flex justify-end gap-3">
           <button
             onClick={onClose}

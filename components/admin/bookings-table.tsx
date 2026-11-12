@@ -28,6 +28,9 @@ function toISODate(d: Date): string {
 }
 
 function isWithinCurrentWindow(booking: Booking, windowStartISO: string, windowEndISO: string): boolean {
+  // Pending bookings always need a decision, regardless of how far out the date is, so they never
+  // get buried in History - only resolved (approved/declined) bookings are subject to the date window.
+  if (booking.status === "pending") return true;
   return booking.date >= windowStartISO && booking.date <= windowEndISO;
 }
 
@@ -67,8 +70,8 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
         {tab === "current" ? (
           <>
             <p className="text-xs text-white/40">
-              Bookings dated from today through the next {CURRENT_WINDOW_DAYS} days. Anything outside that window
-              moves automatically into History.
+              All pending requests, plus approved/declined bookings dated from today through the next{" "}
+              {CURRENT_WINDOW_DAYS} days. Resolved bookings outside that window move automatically into History.
             </p>
             {groupOrder.map(({ status, title }) => {
               const group = currentBookings.filter((b) => b.status === status).sort(sortByDateTimeAsc);
@@ -100,7 +103,8 @@ export function BookingsTable({ bookings }: { bookings: Booking[] }) {
               </span>
             </div>
             <p className="mb-5 text-xs text-white/40">
-              Bookings dated outside the next {CURRENT_WINDOW_DAYS} days (past or further out), across every status.
+              Resolved (approved/declined) bookings dated outside the next {CURRENT_WINDOW_DAYS} days (past or
+              further out). Pending requests always stay in Current until they're actioned.
             </p>
             {historyBookings.length === 0 ? (
               <p className="rounded-2xl border border-white/10 bg-white/[.04] px-5 py-6 text-sm text-white/40">
