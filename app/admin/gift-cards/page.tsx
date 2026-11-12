@@ -20,7 +20,7 @@ export default async function AdminGiftCards() {
   return (
     <main className="flex min-h-screen flex-col bg-black">
       <AdminHeader />
-      <div className="w-full flex-1 px-10 py-12">
+      <div className="w-full flex-1 px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-12">
         <GiftCardsTable giftCards={giftCards} />
       </div>
       <AdminFooter title="Gift Cards" pendingLabel="pending" pendingCount={pendingCount} totalCount={giftCards.length} />

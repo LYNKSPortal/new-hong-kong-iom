@@ -176,6 +176,97 @@ function TabButton({
   );
 }
 
+function BookingActions({
+  booking,
+  onAction,
+  onDelete,
+}: {
+  booking: Booking;
+  onAction: (action: PendingAction) => void;
+  onDelete: (booking: Booking) => void;
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      <button
+        disabled={booking.status === "approved"}
+        onClick={() => onAction({ booking, status: "approved" })}
+        className="rounded-full bg-green-600 px-4 py-2 text-xs font-bold uppercase text-white disabled:opacity-40"
+      >
+        Approve
+      </button>
+      <button
+        disabled={booking.status === "declined"}
+        onClick={() => onAction({ booking, status: "declined" })}
+        className="rounded-full bg-brand-red px-4 py-2 text-xs font-bold uppercase text-white disabled:opacity-40"
+      >
+        Decline
+      </button>
+      <button
+        onClick={() => onDelete(booking)}
+        aria-label="Delete booking"
+        title="Delete booking"
+        className="flex items-center justify-center rounded-full border border-white/15 p-2 text-white/50 transition hover:border-brand-red hover:text-brand-red"
+      >
+        <Trash2 size={15} />
+      </button>
+    </div>
+  );
+}
+
+function BookingCard({
+  booking,
+  onAction,
+  onDelete,
+  showStatus,
+}: {
+  booking: Booking;
+  onAction: (action: PendingAction) => void;
+  onDelete: (booking: Booking) => void;
+  showStatus: boolean;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[.04] p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="truncate font-semibold text-white">{booking.name}</p>
+          <p className="truncate text-xs text-white/50">{booking.email}</p>
+          <p className="text-xs text-white/50">{booking.phone}</p>
+        </div>
+        {showStatus && (
+          <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-bold uppercase ${statusStyles[booking.status]}`}>
+            {booking.status}
+          </span>
+        )}
+      </div>
+      <div className="mt-3 grid grid-cols-3 gap-2 border-t border-white/10 pt-3 text-sm">
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-wide text-white/40">Party</p>
+          <p className="text-white">
+            {booking.guests} guest{booking.guests !== 1 ? "s" : ""}
+          </p>
+        </div>
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-wide text-white/40">Date</p>
+          <p className="text-white">{formatDateDMY(booking.date)}</p>
+        </div>
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-wide text-white/40">Time</p>
+          <p className="text-white">{booking.time}</p>
+        </div>
+      </div>
+      {(booking.notes || booking.adminNotes) && (
+        <div className="mt-3 border-t border-white/10 pt-3 text-sm text-white/50">
+          {booking.notes && <p>{booking.notes}</p>}
+          {booking.adminNotes && <p className="mt-1 text-xs text-white/40">Reply sent: “{booking.adminNotes}”</p>}
+        </div>
+      )}
+      <div className="mt-4 border-t border-white/10 pt-3">
+        <BookingActions booking={booking} onAction={onAction} onDelete={onDelete} />
+      </div>
+    </div>
+  );
+}
+
 function BookingsTableGrid({
   bookings,
   onAction,
@@ -188,75 +279,62 @@ function BookingsTableGrid({
   showStatus?: boolean;
 }) {
   return (
-    <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/[.04]">
-      <table className="w-full min-w-[960px] text-left text-sm text-white">
-        <thead className="border-b border-white/10 bg-white/[.03] text-xs uppercase tracking-wider text-white/40">
-          <tr>
-            <th className="whitespace-nowrap px-5 py-4">Guest</th>
-            <th className="whitespace-nowrap px-5 py-4">Email</th>
-            <th className="whitespace-nowrap px-5 py-4">Phone</th>
-            <th className="whitespace-nowrap px-5 py-4">Party</th>
-            <th className="whitespace-nowrap px-5 py-4">Date</th>
-            <th className="whitespace-nowrap px-5 py-4">Time</th>
-            {showStatus && <th className="whitespace-nowrap px-5 py-4">Status</th>}
-            <th className="w-full px-5 py-4">Notes</th>
-            <th className="whitespace-nowrap px-5 py-4">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {bookings.map((booking) => (
-            <tr key={booking.id} className="border-b border-white/10 last:border-0">
-              <td className="max-w-[160px] truncate px-5 py-4 font-semibold">{booking.name}</td>
-              <td className="max-w-[200px] truncate px-5 py-4 text-white/70">{booking.email}</td>
-              <td className="whitespace-nowrap px-5 py-4 text-white/70">{booking.phone}</td>
-              <td className="whitespace-nowrap px-5 py-4">
-                {booking.guests} guest{booking.guests !== 1 ? "s" : ""}
-              </td>
-              <td className="whitespace-nowrap px-5 py-4">{formatDateDMY(booking.date)}</td>
-              <td className="whitespace-nowrap px-5 py-4">{booking.time}</td>
-              {showStatus && (
-                <td className="whitespace-nowrap px-5 py-4">
-                  <span className={`rounded-full px-3 py-1 text-xs font-bold uppercase ${statusStyles[booking.status]}`}>
-                    {booking.status}
-                  </span>
-                </td>
-              )}
-              <td className="min-w-[220px] px-5 py-4 text-white/50">
-                <p className="truncate">{booking.notes || "—"}</p>
-                {booking.adminNotes && (
-                  <p className="mt-1 truncate text-xs text-white/40">Reply sent: “{booking.adminNotes}”</p>
-                )}
-              </td>
-              <td className="px-5 py-4">
-                <div className="flex gap-2 whitespace-nowrap">
-                  <button
-                    disabled={booking.status === "approved"}
-                    onClick={() => onAction({ booking, status: "approved" })}
-                    className="rounded-full bg-green-600 px-4 py-2 text-xs font-bold uppercase text-white disabled:opacity-40"
-                  >
-                    Approve
-                  </button>
-                  <button
-                    disabled={booking.status === "declined"}
-                    onClick={() => onAction({ booking, status: "declined" })}
-                    className="rounded-full bg-brand-red px-4 py-2 text-xs font-bold uppercase text-white disabled:opacity-40"
-                  >
-                    Decline
-                  </button>
-                  <button
-                    onClick={() => onDelete(booking)}
-                    aria-label="Delete booking"
-                    title="Delete booking"
-                    className="flex items-center justify-center rounded-full border border-white/15 p-2 text-white/50 transition hover:border-brand-red hover:text-brand-red"
-                  >
-                    <Trash2 size={15} />
-                  </button>
-                </div>
-              </td>
+    <>
+      <div className="space-y-3 lg:hidden">
+        {bookings.map((booking) => (
+          <BookingCard key={booking.id} booking={booking} onAction={onAction} onDelete={onDelete} showStatus={showStatus} />
+        ))}
+      </div>
+
+      <div className="hidden overflow-x-auto rounded-2xl border border-white/10 bg-white/[.04] lg:block">
+        <table className="w-full min-w-[960px] text-left text-sm text-white">
+          <thead className="border-b border-white/10 bg-white/[.03] text-xs uppercase tracking-wider text-white/40">
+            <tr>
+              <th className="whitespace-nowrap px-5 py-4">Guest</th>
+              <th className="whitespace-nowrap px-5 py-4">Email</th>
+              <th className="whitespace-nowrap px-5 py-4">Phone</th>
+              <th className="whitespace-nowrap px-5 py-4">Party</th>
+              <th className="whitespace-nowrap px-5 py-4">Date</th>
+              <th className="whitespace-nowrap px-5 py-4">Time</th>
+              {showStatus && <th className="whitespace-nowrap px-5 py-4">Status</th>}
+              <th className="w-full px-5 py-4">Notes</th>
+              <th className="whitespace-nowrap px-5 py-4">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {bookings.map((booking) => (
+              <tr key={booking.id} className="border-b border-white/10 last:border-0">
+                <td className="max-w-[160px] truncate px-5 py-4 font-semibold">{booking.name}</td>
+                <td className="max-w-[200px] truncate px-5 py-4 text-white/70">{booking.email}</td>
+                <td className="whitespace-nowrap px-5 py-4 text-white/70">{booking.phone}</td>
+                <td className="whitespace-nowrap px-5 py-4">
+                  {booking.guests} guest{booking.guests !== 1 ? "s" : ""}
+                </td>
+                <td className="whitespace-nowrap px-5 py-4">{formatDateDMY(booking.date)}</td>
+                <td className="whitespace-nowrap px-5 py-4">{booking.time}</td>
+                {showStatus && (
+                  <td className="whitespace-nowrap px-5 py-4">
+                    <span className={`rounded-full px-3 py-1 text-xs font-bold uppercase ${statusStyles[booking.status]}`}>
+                      {booking.status}
+                    </span>
+                  </td>
+                )}
+                <td className="min-w-[220px] px-5 py-4 text-white/50">
+                  <p className="truncate">{booking.notes || "—"}</p>
+                  {booking.adminNotes && (
+                    <p className="mt-1 truncate text-xs text-white/40">Reply sent: “{booking.adminNotes}”</p>
+                  )}
+                </td>
+                <td className="px-5 py-4">
+                  <div className="whitespace-nowrap">
+                    <BookingActions booking={booking} onAction={onAction} onDelete={onDelete} />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
