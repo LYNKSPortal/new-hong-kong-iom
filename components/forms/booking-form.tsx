@@ -106,7 +106,7 @@ export function BookingForm() {
   return (
     <div>
       <BookingStepper current={step} />
-      <div className="rounded-2xl border border-brand-neutral bg-white p-6 shadow-soft sm:p-9">
+      <div className="rounded-2xl border border-brand-neutral bg-white p-5 shadow-soft sm:p-9">
         {step === 0 && (
           <div>
             <StepHeading icon={Users} title="Guests" subtitle="Select the number of people in your party" />
@@ -255,12 +255,12 @@ export function BookingForm() {
 
         {submitError && <p className="mt-4 text-sm font-semibold text-brand-red">{submitError}</p>}
 
-        <div className="mt-8 flex items-center justify-between gap-4">
+        <div className="mt-8 flex items-center justify-between gap-3">
           {step > 0 ? (
             <button
               type="button"
               onClick={goBack}
-              className="rounded-full border border-brand-neutral px-6 py-3 text-xs font-bold uppercase tracking-wider text-black/70 transition hover:border-black"
+              className="shrink-0 rounded-full border border-brand-neutral px-5 py-3 text-xs font-bold uppercase tracking-wider text-black/70 transition hover:border-black sm:px-6"
             >
               Back
             </button>
@@ -271,7 +271,7 @@ export function BookingForm() {
             <button
               type="button"
               onClick={goNext}
-              className="rounded-full bg-brand-red px-7 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-brand-red-dark"
+              className="rounded-full bg-brand-red px-6 py-3.5 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-brand-red-dark sm:px-7 sm:py-4"
             >
               Continue
             </button>
@@ -280,10 +280,10 @@ export function BookingForm() {
               type="button"
               disabled={isSubmitting}
               onClick={onConfirm}
-              className="flex items-center gap-2 rounded-full bg-brand-red px-7 py-4 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-brand-red-dark disabled:opacity-60"
+              className="flex items-center gap-2 whitespace-nowrap rounded-full bg-brand-red px-5 py-3.5 text-xs font-bold uppercase tracking-[.12em] text-white transition hover:bg-brand-red-dark disabled:opacity-60 sm:px-7 sm:py-4"
             >
-              <CheckCircle2 size={16} />
-              {isSubmitting ? "Sending request…" : "Confirm Booking"}
+              <CheckCircle2 size={16} className="shrink-0" />
+              {isSubmitting ? "Sending…" : "Confirm Booking"}
             </button>
           )}
         </div>
@@ -299,12 +299,12 @@ export function BookingForm() {
 function StepHeading({ icon: Icon, title, subtitle }: { icon: React.ElementType; title: string; subtitle: string }) {
   return (
     <div className="flex items-start gap-3">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
-        <Icon size={18} />
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-red text-white sm:h-11 sm:w-11">
+        <Icon size={17} />
       </div>
-      <div>
-        <h3 className="display text-2xl uppercase">{title}</h3>
-        <p className="text-sm text-black/55">{subtitle}</p>
+      <div className="min-w-0">
+        <h3 className="display text-xl uppercase sm:text-2xl">{title}</h3>
+        <p className="text-sm leading-5 text-black/55">{subtitle}</p>
       </div>
     </div>
   );

@@ -110,23 +110,23 @@ export function BookingCalendar({
             onClick={() => navigateDay(-1)}
             disabled={!selected || startOfDay(selected) <= today}
             aria-label="Previous day"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-brand-neutral text-black/50 transition hover:border-brand-red hover:text-brand-red disabled:opacity-30"
+            className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-brand-neutral text-black/50 transition hover:border-brand-red hover:text-brand-red disabled:opacity-30 sm:flex"
           >
             <ChevronLeft size={18} />
           </button>
           <button
             type="button"
             onClick={() => setShowCalendar((v) => !v)}
-            className="flex w-full items-center gap-3 rounded-xl border border-brand-neutral bg-white px-4 py-3 text-left text-sm outline-none transition focus:border-brand-red"
+            className="flex w-full items-center gap-2 rounded-xl border border-brand-neutral bg-white px-3 py-3 text-left text-sm outline-none transition focus:border-brand-red sm:gap-3 sm:px-4"
           >
-            <CalendarDays size={17} className="text-brand-red" />
-            {selected ? formatNavDate(selected) : "Choose a date"}
+            <CalendarDays size={17} className="shrink-0 text-brand-red" />
+            <span className="truncate">{selected ? formatNavDate(selected) : "Choose a date"}</span>
           </button>
           <button
             type="button"
             onClick={() => navigateDay(1)}
             aria-label="Next day"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-brand-neutral text-black/50 transition hover:border-brand-red hover:text-brand-red"
+            className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-brand-neutral text-black/50 transition hover:border-brand-red hover:text-brand-red sm:flex"
           >
             <ChevronRight size={18} />
           </button>
@@ -207,14 +207,14 @@ export function BookingCalendar({
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-black/40">
               {timeOptions.filter((t) => t.available).length} time slots available
             </p>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
               {timeOptions.map(({ time: t, available }) => (
                 <button
                   type="button"
                   key={t}
                   disabled={!available}
                   onClick={() => onTimeChange(t)}
-                  className={`rounded-xl border px-3 py-2.5 text-sm font-semibold transition ${
+                  className={`flex flex-col items-center justify-center gap-0.5 rounded-xl border px-2 py-2.5 text-sm font-semibold leading-tight transition ${
                     time === t
                       ? "border-brand-red bg-brand-red text-white"
                       : available
@@ -222,7 +222,8 @@ export function BookingCalendar({
                         : "border-brand-neutral/60 bg-brand-neutral/30 text-black/25"
                   }`}
                 >
-                  {available ? t : `${t} — Fully booked`}
+                  <span>{t}</span>
+                  {!available && <span className="text-[10px] font-bold uppercase tracking-wide">Booked</span>}
                 </button>
               ))}
             </div>
