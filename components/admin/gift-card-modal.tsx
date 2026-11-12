@@ -32,8 +32,8 @@ export function GiftCardModal({ onClose, onCreated }: { onClose: () => void; onC
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
-      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-brand-charcoal p-6 text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/70 px-4 py-8">
+      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-brand-charcoal p-7 text-white sm:max-w-lg sm:p-8 md:max-w-xl">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="eyebrow text-white/60">New Hong Kong</p>
