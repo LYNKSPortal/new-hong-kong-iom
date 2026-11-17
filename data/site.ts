@@ -195,105 +195,118 @@ export const mainMenu = {title:"Main Menu", sections:[
 ]};
 
 export const lunchDrinksMenu = {title:"Lunch & Drinks", sections:[
-  {name:"Extras", items:[
-    {name:"Kimchi", description:"", price:"£3"},
-    {name:"Spring Rolls (4pc)", description:"", price:"£4"},
-    {name:"Prawn Toast", description:"", price:"£4.50"},
-    {name:"Sichuan Pork Dumplings", description:"", price:"£6"},
-    {name:"Fried Chicken Wings", description:"", price:"£6"},
-    {name:"Chicken Satay Skewers", description:"", price:"£6"},
-    {name:"Steamed Rice", description:"", price:"£3"},
+  {name:"Noodle Dishes", note:"Black Pepper Udon can be ordered with chicken or beef.", items:[
+    {name:"Crispy Chicken Ramen", description:"Sweetcorn, spring onions, Sriracha", price:"£12.50"},
+    {name:"Pork Ramen", description:"Pork belly, egg, pork broth, spring onions", price:"£12.50"},
+    {name:"Spicy Beef Ramen", description:"Chilli broth, egg, broccoli, spring onions", price:"£12.50"},
+    {name:"Sichuan Pulled Pork Ramen", description:"Black vinegar, red oil, Sichuan pepper, coriander", price:"£12.50"},
+    {name:"Black Pepper Udon", description:"Stir-fried vegetables; choice of chicken or beef", price:"£10.50"},
+    {name:"Beef in Soy Sauce & Sesame", description:"Stir-fried vegetables, egg noodles", price:"£9.20"},
+    {name:"Singapore Noodles (Vegetable)", description:"Stir-fried curry rice noodles, vegetables, mango sauce, lime wedge", price:"£9.20"},
+    {name:"Spicy King Prawn Udon", description:"Stir-fried vegetables", price:"£10.90"},
+    {name:"Singapore Noodles (Mixed Meat)", description:"Stir-fried curry rice noodles, char siu, chicken, king prawns", price:"£9.90"},
+    {name:"Malaysian Laksa Noodles", description:"King prawns, tofu, fish cakes, rice noodles, coconut curry broth, beansprouts", price:"£12.90"}
+  ]},
+  {name:"Classics", note:"All classics are served with a choice of steamed rice or fried rice. Upgrade to noodles +£1.50. Go crispy (on applicable protein dishes) +£0.40.", items:[
+    {name:"Crispy Chilli Beef", description:"Beef", price:"£9.90"},
+    {name:"Crispy Salt & Chilli Chicken", description:"Chicken", price:"£9.90"},
+    {name:"Kung Po Sauce", description:"Chicken or pork", price:"£9.50"},
+    {name:"Satay Sauce", description:"Chicken, pork or beef", price:"£9.50"},
+    {name:"Curry Sauce", description:"Chicken, pork or beef", price:"£9.50"},
+    {name:"Oyster Sauce", description:"Chicken, pork or beef", price:"£9.50"},
+    {name:"Sweet & Sour Sauce", description:"Chicken, pork or beef", price:"£9.50"},
+    {name:"Sichuan Sauce", description:"Chicken, pork or beef", price:"£9.50"},
+    {name:"Black Bean Sauce", description:"Chicken, pork or beef", price:"£9.50"}
+  ]},
+  {name:"Starters, Sides & Extras", items:[
+    {name:"Kimchi", description:"", price:"£3.00"},
+    {name:"Spring Rolls", description:"4 pieces", price:"£5.00"},
+    {name:"Prawn Toast", description:"", price:"£8.50"},
+    {name:"Sichuan Pork Dumplings", description:"", price:"£6.90"},
+    {name:"Fried Chicken Wings", description:"", price:"£6.50"},
+    {name:"Chicken Satay Skewers", description:"", price:"£6.50"},
+    {name:"Steamed Rice", description:"", price:"£3.50"},
     {name:"Fried Rice", description:"", price:"£3.50"},
-    {name:"Chips", description:"", price:"£3"},
-    {name:"Egg Noodles", description:"", price:"£3.50"},
-    {name:"Rice Noodles", description:"", price:"£3.50"},
-    {name:"Sauce (Curry or Sweet & Sour)", description:"", price:"£1.80"}
+    {name:"Chips", description:"", price:"£3.50"},
+    {name:"Egg Noodles", description:"", price:"£5.50"},
+    {name:"Rice Noodles", description:"", price:"£5.50"},
+    {name:"Curry Sauce", description:"Side sauce", price:"£1.80"},
+    {name:"Sweet & Sour Sauce", description:"Side sauce", price:"£1.80"}
   ]},
-  {name:"Classics", note:"All dishes are served with a choice of Steamed or Fried Rice. Upgrade to Noodles for £1 extra. Go crispy for +40p.", items:[
-    {name:"Crispy Chilli Beef", description:"", price:"£9.20"},
-    {name:"Crispy Salt & Chilli Chicken", description:"", price:"£8.80"},
-    {name:"Chicken or Pork", description:"Choice of Kung Po, Satay, Curry, Oyster, Sweet & Sour, Sichuan, or Black Bean sauce", price:"£9.00"}
-  ]},
-  {name:"Noodle Dishes", items:[
-    {name:"Crispy Chicken Ramen", description:"Sweetcorn, spring onions, and sriracha", price:"£9.90"},
-    {name:"Pork Ramen", description:"Pork belly, egg, pork broth, and spring onions", price:"£9.90"},
-    {name:"Spicy Beef Ramen", description:"Chilli broth, egg, broccoli, and spring onions", price:"£9.90"},
-    {name:"Sichuan Pulled Pork Ramen", description:"Black vinegar, red oil, Sichuan pepper, and coriander", price:"£9.90"},
-    {name:"Black Pepper Udon", description:"Stir-fried veg with a choice of chicken or beef", price:"£11.00"},
-    {name:"Beef in Soy Sauce & Sesame", description:"Stir-fried with vegetables and egg noodles", price:"£9.70"},
-    {name:"Singapore Noodles", description:"Stir-fried curry rice noodles with veg, mango sauce & lime wedge", price:"£8.70"},
-    {name:"Spicy King Prawn Udon", description:"Stir-fried with vegetables", price:"£9.90"},
-    {name:"Singapore Noodles", description:"Stir-fried curry rice noodles, char siu, chicken & king prawns", price:"£9.50"},
-    {name:"Malaysian Laksa Noodles", description:"King prawns, tofu, fish cakes, and rice noodles in a coconut curry broth, with beansprouts", price:"£11.90"}
-  ]},
-  {name:"Rice Dishes", note:"Dishes from £9.20", items:[
-    {name:"Chicken or Pork Katsudon", description:"Panko coated cutlet with soy, sake, and egg, over steamed rice", price:""},
-    {name:"Singapore Fried Rice", description:"Stir-fried with mixed meat and vegetables, topped with fried egg", price:""},
-    {name:"Roast Duck", description:"Topped with sweet soy on Chinese leaf, and steamed or fried rice", price:""},
-    {name:"King Prawns", description:"In ginger and spring onion, over steamed rice", price:""},
-    {name:"Roast Pork", description:"Topped with sweet soy on Chinese leaf, and steamed or fried rice", price:""},
-    {name:"Chicken and Pancetta", description:"Crispy bacon and chicken fried rice with fried egg", price:""},
-    {name:"Garlic Chicken", description:"Crispy chicken fillet with a garlic butter sauce on steamed rice", price:""},
-    {name:"Thai Chilli Chicken", description:"Crispy chicken fillet with a Thai chilli sauce on steamed rice", price:""},
-    {name:"Thai Honey Pork", description:"Crispy pork chop with a honey sauce on steamed rice", price:""},
-    {name:"Lemon Chicken", description:"Crispy lemon glazed chicken on steamed rice", price:""},
-    {name:"Kimchi and Egg", description:"Stir-fried kimchi rice topped with fried egg, nori, and toasted sesame", price:""}
+  {name:"Rice Dishes", note:"All rice dishes £9.90 each", items:[
+    {name:"Chicken Katsudon", description:"Panko-coated chicken cutlet with soy, sake and egg over steamed rice", price:"£9.90"},
+    {name:"Pork Katsudon", description:"Panko-coated pork cutlet with soy, sake and egg over steamed rice", price:"£9.90"},
+    {name:"Singapore Fried Rice", description:"Stir-fried mixed meat and vegetables, topped with fried egg", price:"£9.90"},
+    {name:"Roast Duck", description:"Sweet soy, Chinese leaf, steamed or fried rice", price:"£9.90"},
+    {name:"King Prawns in Ginger & Spring Onion", description:"King prawns with ginger and spring onion over steamed rice", price:"£9.90"},
+    {name:"Roast Pork", description:"Sweet soy, Chinese leaf, steamed or fried rice", price:"£9.90"},
+    {name:"Chicken and Pancetta", description:"Crispy bacon and chicken fried rice with fried egg", price:"£9.90"},
+    {name:"Garlic Chicken", description:"Crispy chicken fillet, garlic butter sauce, steamed rice", price:"£9.90"},
+    {name:"Thai Chilli Chicken", description:"Crispy chicken fillet, Thai chilli sauce, steamed rice", price:"£9.90"},
+    {name:"Thai Honey Pork", description:"Crispy pork chop, honey sauce, steamed rice", price:"£9.90"},
+    {name:"Lemon Chicken", description:"Crispy lemon-glazed chicken, steamed rice", price:"£9.90"},
+    {name:"Kimchi and Egg", description:"Stir-fried kimchi rice, fried egg, nori, toasted sesame", price:"£9.90"}
   ]},
   {name:"Steamed Buns", note:"£4.90 each", items:[
-    {name:"Pork Belly", description:"With pickled cucumber, hoisin sauce, and crushed peanuts", price:""},
-    {name:"Char Siu", description:"With crispy shallot & spring onion", price:""},
-    {name:"Crispy Chicken", description:"With pickled carrot, fresh coriander, and wasabi mayo", price:""},
-    {name:"Deep Fried Tofu", description:"With kimchi, mushrooms, and sriracha sauce", price:""},
-    {name:"Tempura King Prawn", description:"With pickled fennel, sweet chilli & mint sauce", price:""},
-    {name:"Condensed Milk", description:"With two steamed buns and crushed caramelised peanuts", price:""}
+    {name:"Pork Belly", description:"Pickled cucumber, hoisin sauce, crushed peanuts", price:""},
+    {name:"Char Siu", description:"Crispy shallot, spring onion", price:""},
+    {name:"Crispy Chicken", description:"Pickled carrot, fresh coriander, wasabi mayo", price:""},
+    {name:"Deep Fried Tofu", description:"Kimchi, mushrooms, Sriracha sauce", price:""},
+    {name:"Tempura King Prawn", description:"Pickled fennel, sweet chilli sauce, mint sauce", price:""},
+    {name:"Condensed Milk", description:"Two steamed buns, crushed caramelised peanuts", price:""}
   ]},
-  {name:"Coffees & Milk Teas", items:[
-    {name:"Espresso", description:"", price:"£2"},
-    {name:"Latte", description:"", price:"£3"},
-    {name:"Cappuccino", description:"", price:"£3"},
-    {name:"Americano", description:"", price:"£2"},
-    {name:"English Tea", description:"", price:"£2"}
-  ]},
-  {name:"Chinese Teas", note:"Bottomless teapots · £3 pot / £6 bottomless", items:[
-    {name:"Dog Head", description:"Chinese Green Tea", price:""},
-    {name:"Iron Goddess of Mercy", description:"Oolong", price:""},
-    {name:"Jasmine Pearl Green", description:"Green Tea", price:""},
-    {name:"Royal Pu'er", description:"Pu'er", price:""},
-    {name:"Snow White Gold", description:"White Tea", price:""},
-    {name:"Iron Warrior Monk", description:"Oolong", price:""},
-    {name:"Fountain of Youth Green", description:"Infused Green Tea", price:""},
-    {name:"Ginkgo Popcorn", description:"Genmaicha with nettle and ginkgo", price:""},
-    {name:"Goji Berry & Cranberry", description:"Fruit Infusion", price:""},
-    {name:"Chrysanthemum Flowers", description:"Flower Infusion", price:""}
-  ]},
-  {name:"Beers", items:[
-    {name:"Tsing Tao", description:"China · 4.70% ABV", price:"£3.90"},
-    {name:"Asahi", description:"Japan · 5.00% ABV", price:"£3.90"},
-    {name:"Tiger Lager", description:"Singapore · 4.80% ABV", price:"£3.90"},
-    {name:"Kirin Ichiban", description:"Japan · 5.00% ABV", price:"£3.90"},
-    {name:"Hitachino Nest White Ale", description:"Japan · 5.00% ABV", price:"£6.00"},
-    {name:"Peroni (gluten free)", description:"Italy · 5.10% ABV", price:"£3.90"},
-    {name:"Krombacher (low alcohol)", description:"Italy · 0.00% ABV", price:"£3.90"},
-    {name:"Samuel Smith Cider", description:"UK · 4.00% ABV · 550ml", price:"£5.50"}
-  ]},
-  {name:"Wines", note:"175ml / 250ml", items:[
-    {name:"Chardonnay", description:"White · Australia · 13.0% ABV", price:"£5 / £6"},
-    {name:"Montepulciano", description:"Red · Italy · 12.5% ABV", price:"£5 / £6"},
-    {name:"Sauvignon Blanc", description:"White · Chile · 12.0% ABV", price:"£5 / £6"},
-    {name:"Merlot", description:"Red · Chile · 12.5% ABV", price:"£5 / £6"},
-    {name:"White Zinfandel Rosé", description:"USA · 10.5% ABV", price:"£5 / £6"},
-    {name:"Prosecco", description:"Italy · 11.0% ABV · 20cl", price:"£6"},
-    {name:"Pinot Rosé Brut", description:"Italy · 11.0% ABV", price:"£6.50"}
+  {name:"Bottomless Teapots", note:"Two price groups shown as pot / bottomless.", items:[
+    {name:"Dog Head", description:"Chinese green tea", price:"£3 / £6"},
+    {name:"Iron Goddess of Mercy", description:"Oolong", price:"£3 / £6"},
+    {name:"Jasmine Pearl Green", description:"Green tea", price:"£3 / £6"},
+    {name:"Royal Pu'er", description:"Pu'er", price:"£2.80 / £5.50"},
+    {name:"Snow White Gold", description:"White tea", price:"£2.80 / £5.50"},
+    {name:"Iron Warrior Monk", description:"Oolong", price:"£2.80 / £5.50"},
+    {name:"Fountain of Youth Green", description:"Infused green tea", price:"£2.80 / £5.50"},
+    {name:"Ginkgo Popcorn", description:"Genmaicha with nettle and ginkgo", price:"£2.80 / £5.50"},
+    {name:"Goji Berry & Cranberry", description:"Fruit infusion", price:"£2.80 / £5.50"},
+    {name:"Chrysanthemum Flowers", description:"Flower infusion", price:"£2.80 / £5.50"}
   ]},
   {name:"Soft Drinks", items:[
-    {name:"Coke / Diet Coke / Sprite / Fanta", description:"", price:"£2"},
-    {name:"Cordial", description:"", price:"£2"},
-    {name:"Fruit Juice", description:"", price:"£2.50"},
-    {name:"Still or Sparkling Water", description:"", price:"£2"},
+    {name:"Coke", description:"Regular", price:"£2.50"},
+    {name:"Diet Coke", description:"", price:"£2.50"},
+    {name:"Sprite", description:"", price:"£2.50"},
+    {name:"Fanta", description:"", price:"£2.50"},
+    {name:"Cordial", description:"Lime, Blackcurrant", price:"£2.00"},
+    {name:"Fruit Juice", description:"Orange, Apple, Pineapple", price:"£2.50"},
+    {name:"Still Water", description:"250ml / 750ml", price:"£2.00 / £4.50"},
+    {name:"Sparkling Water", description:"250ml / 750ml", price:"£2.00 / £4.50"},
     {name:"Appletiser", description:"", price:"£2.70"},
-    {name:"J2O", description:"", price:"£2.70"},
+    {name:"J2O", description:"Apple & Raspberry, Orange & Passionfruit", price:"£2.70"},
     {name:"Iced Lemon Tea", description:"", price:"£2.80"},
-    {name:"Posh Pop", description:"", price:"£2.70"}
+    {name:"Posh Pop", description:"Ginger & Chilli, Pear & Elderflower, Strawberry & Rhubarb", price:"£2.90"}
+  ]},
+  {name:"Coffees & Milk Teas", items:[
+    {name:"Espresso", description:"", price:"£3.50"},
+    {name:"Latte", description:"", price:"£3.50"},
+    {name:"Cappuccino", description:"", price:"£3.50"},
+    {name:"Americano", description:"", price:"£3.50"},
+    {name:"English Tea", description:"", price:"£2.00"},
+    {name:"Vietnamese Coffee", description:"Iced or Hot", price:"£4.00"}
+  ]},
+  {name:"Wines", note:"Still wines served 175ml / 250ml. Sparkling wines served 20cl.", items:[
+    {name:"Chardonnay", description:"White · Australia · 13.0% ABV", price:"£5.90 / £7.50"},
+    {name:"Montepulciano", description:"Red · Italy · 12.5% ABV", price:"£5.90 / £7.50"},
+    {name:"Sauvignon Blanc", description:"White · Chile · 12.0% ABV", price:"£5.90 / £7.50"},
+    {name:"Merlot", description:"Red · Chile · 12.5% ABV", price:"£5.90 / £7.50"},
+    {name:"White Zinfandel", description:"Rosé · USA · 10.5% ABV", price:"£5.90 / £7.50"},
+    {name:"Prosecco", description:"Sparkling · Italy · 11.0% ABV", price:"£7.20"},
+    {name:"Pinot Rosé Brut", description:"Sparkling · Italy · 11.0% ABV", price:"£7.20"}
+  ]},
+  {name:"Beers & Ciders", items:[
+    {name:"Tsing Tao", description:"Beer · China · 4.70% ABV", price:"£3.90"},
+    {name:"Asahi", description:"Beer · Japan · 5.00% ABV", price:"£3.90"},
+    {name:"Tiger", description:"Lager · Singapore · 4.80% ABV", price:"£3.90"},
+    {name:"Hitachino Nest", description:"White Ale · Japan · 5.00% ABV", price:"£6.00"},
+    {name:"Peroni", description:"Gluten-free beer · Italy · 5.10% ABV", price:"£3.90"},
+    {name:"Krombacher", description:"Low-alcohol beer · Germany · 0.0% ABV", price:"£3.90"},
+    {name:"Samuel Smith", description:"Cider · UK · 4.00% ABV · 550ml", price:"£5.50"},
+    {name:"Rekorderlig Wild Berries", description:"Cider · Sweden · 4.50% ABV · 500ml", price:"£4.50"}
   ]}
 ]};
 
