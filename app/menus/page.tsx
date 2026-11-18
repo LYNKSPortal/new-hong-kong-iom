@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Menus",
-  description: "Explore the Main Menu, Lunch & Drinks, Takeaway and Spirits menus at New Hong Kong, Douglas. Authentic Chinese and Asian dishes for every occasion.",
+  description: "Explore the Main Menu, Lunch & Drinks and Takeaway menus at New Hong Kong, Douglas. Authentic Chinese and Asian dishes for every occasion.",
   path: "/menus",
 });
 
@@ -25,7 +25,7 @@ export default function Menus() {
           title="Find your favourites."
           copy="Our menus are updated regularly. Please speak to the team about allergies or dietary requirements."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {menus.map((menu) => (
             <MenuCard key={menu.title} menu={menu} />
           ))}
