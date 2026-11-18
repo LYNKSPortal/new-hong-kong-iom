@@ -15,7 +15,7 @@ export default function MainMenu() {
         eyebrow="Food & drink"
         title={mainMenu.title}
         copy="The dishes we are known for, from dim sum to wok-fired signatures."
-        image="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85"
+        image="/dish-08.jpg"
         imageAlt="A selection of dishes from the New Hong Kong main menu"
       />
       <section className="shell py-24">

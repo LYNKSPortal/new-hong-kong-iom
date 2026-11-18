@@ -15,7 +15,7 @@ export default function Takeaway() {
         eyebrow="Food & drink"
         title={takeawayMenu.title}
         copy="Your New Hong Kong favourites, ready for collection."
-        image="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85"
+        image="/dish-01.jpg"
         imageAlt="A selection of dishes from the New Hong Kong takeaway menu"
       />
       <section className="shell py-24">

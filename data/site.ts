@@ -68,7 +68,7 @@ export const dishes = [
   { name: "Roast Pork", image: "/dish-06.jpg", tag: "Classic Cantonese" }
 ];
 
-export const menus = [{ title:"Main Menu", description:"The dishes we are known for, from dim sum to wok-fired signatures.", updated:"May 2026", slug:"main-menu", pdf:"/Menus/New Hong Kong - Classics and Specials Menus.pdf" }, { title:"Lunch & Drinks", description:"Easy afternoons, bright plates and a considered drinks list.", updated:"May 2026", slug:"lunch-drinks", pdf:"/Menus/New Hong Kong - Lunch Drinks Menu.pdf" }, { title:"Takeaway", description:"Your New Hong Kong favourites, ready for collection.", updated:"May 2026", slug:"takeaway", pdf:"/Menus/New Hong Kong - Take Away Menu.pdf" }];
+export const menus = [{ title:"Main Menu", description:"The dishes we are known for, from dim sum to wok-fired signatures.", updated:"November 2026", slug:"main-menu", pdf:"/Menus/New Hong Kong - Classics and Specials Menus.pdf" }, { title:"Lunch & Drinks", description:"Easy afternoons, bright plates and a considered drinks list.", updated:"November 2026", slug:"lunch-drinks", pdf:"/Menus/New Hong Kong - Lunch Drinks Menu.pdf" }, { title:"Takeaway", description:"Your New Hong Kong favourites, ready for collection.", updated:"November 2026", slug:"takeaway", pdf:"/Menus/New Hong Kong - Take Away Menu.pdf" }];
 
 export const mainMenu = {title:"Main Menu", sections:[
   {name:"Steamed Bao", note:"£5.50 each. The kitchen works in a high-gluten environment and cannot guarantee that food leaving the kitchen is 100% gluten-free — please let your server know of any food sensitivities before ordering. Warning: some dishes may contain bones.", items:[

@@ -15,7 +15,7 @@ export default function LunchDrinksMenu() {
         eyebrow="Food & drink"
         title={lunchDrinksMenu.title}
         copy="Easy afternoons, bright plates and a considered drinks list."
-        image="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85"
+        image="/dish-02.jpg"
         imageAlt="A selection of lunch dishes and drinks at New Hong Kong"
       />
       <section className="shell py-24">

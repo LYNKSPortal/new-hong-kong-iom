@@ -16,7 +16,7 @@ export default function Menus() {
         eyebrow="Food & drink"
         title="Menus made for gathering."
         copy="From light lunches to long, leisurely dinners, explore the menus at New Hong Kong."
-        image="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85"
+        image="/dish-06.jpg"
         imageAlt="A beautifully plated Asian dish at New Hong Kong"
       />
       <section className="shell py-24">
