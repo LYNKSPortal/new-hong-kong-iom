@@ -68,7 +68,7 @@ export const dishes = [
   { name: "Roast Pork", image: "/dish-06.jpg", tag: "Classic Cantonese" }
 ];
 
-export const menus = [{ title:"Main Menu", description:"The dishes we are known for, from dim sum to wok-fired signatures.", updated:"May 2026", slug:"main-menu" }, { title:"Lunch & Drinks", description:"Easy afternoons, bright plates and a considered drinks list.", updated:"May 2026", slug:"lunch-drinks" }, { title:"Takeaway", description:"Your New Hong Kong favourites, ready for collection.", updated:"May 2026", slug:"takeaway" }, { title:"Spirits", description:"Whisky, sake and a focused selection of after-dinner pours.", updated:"May 2026" }];
+export const menus = [{ title:"Main Menu", description:"The dishes we are known for, from dim sum to wok-fired signatures.", updated:"May 2026", slug:"main-menu", pdf:"/Menus/New Hong Kong - Classics and Specials Menus.pdf" }, { title:"Lunch & Drinks", description:"Easy afternoons, bright plates and a considered drinks list.", updated:"May 2026", slug:"lunch-drinks", pdf:"/Menus/New Hong Kong - Lunch Drinks Menu.pdf" }, { title:"Takeaway", description:"Your New Hong Kong favourites, ready for collection.", updated:"May 2026", slug:"takeaway", pdf:"/Menus/New Hong Kong - Take Away Menu.pdf" }, { title:"Spirits", description:"Whisky, sake and a focused selection of after-dinner pours.", updated:"May 2026" }];
 
 export const mainMenu = {title:"Main Menu", sections:[
   {name:"Soups", items:[
