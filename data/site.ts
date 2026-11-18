@@ -323,12 +323,6 @@ export const lunchDrinksMenu = {title:"Lunch & Drinks", sections:[
 ]};
 
 export const takeawayMenu = {title:"Takeaway", sections:[
-  {name:"Soups", items:[
-    {name:"Chicken & Sweetcorn", description:"", price:"£4.20", options:[]},
-    {name:"Wonton", description:"", price:"£4.80", options:[]},
-    {name:"Hot & Sour", description:"Vegetarian | Meat", price:"£3.80 / £4.20", options:[]},
-    {name:"Kimchi Rice & Salted Pork", description:"", price:"£4.20", options:[]}
-  ]},
   {name:"Small Bites", items:[
     {name:"Mixed Starter", description:"", price:"£13.80", options:[]},
     {name:"Edamame", description:"", price:"£4.80", options:[]},
@@ -343,51 +337,55 @@ export const takeawayMenu = {title:"Takeaway", sections:[
     {name:"Fried Chicken Wings", description:"", price:"£6.50", options:[]},
     {name:"Chicken Skewers", description:"", price:"£6.50", options:[]}
   ]},
-  {name:"Aromatic Shredded Duck", note:"1/4 or 1/2 portion, served with cucumber, spring onion, plum & chilli sauce, and hoisin sauce.", items:[
-    {name:"Steamed Buns", description:"¼ portion / ½ portion", price:"£14.50 / £25", options:[]},
-    {name:"Pancakes", description:"¼ portion / ½ portion", price:"£10.90 / £19.90", options:[]}
+  {name:"Soups", items:[
+    {name:"Chicken & Sweetcorn", description:"", price:"£4.20", options:[]},
+    {name:"Wonton", description:"", price:"£4.80", options:[]},
+    {name:"Hot & Sour", description:"Vegetarian", price:"£3.80", options:[]},
+    {name:"Hot & Sour", description:"Meat", price:"£4.20", options:[]},
+    {name:"Kimchi Rice & Salted Pork", description:"", price:"£4.20", options:[]}
   ]},
-  {name:"Steamed Bao", note:"£5.50 each", items:[
-    {name:"Crispy Chicken", description:"Pickled carrot, fresh coriander, and wasabi mayo", price:"£5.50", options:[]},
-    {name:"Pork Belly", description:"Pickled cucumber, hoisin sauce, and caramelised peanut", price:"£5.50", options:[]},
-    {name:"Char Siu", description:"Crispy shallot & spring onion", price:"£5.50", options:[]},
-    {name:"Tempura King Prawn", description:"Pickled fennel, sweet chilli & mint sauce", price:"£5.50", options:[]},
-    {name:"Deep Fried Tofu", description:"Kimchi, mushrooms, and sriracha sauce", price:"£5.50", options:[]}
+  {name:"Signature Steamed Buns", note:"£4.90 each", items:[
+    {name:"Crispy Chicken", description:"Pickled carrot, fresh coriander and wasabi mayo", price:"£4.90", options:[]},
+    {name:"Pork Belly", description:"Pickled cucumber, hoisin sauce and caramelised peanut", price:"£4.90", options:[]},
+    {name:"Char Siu", description:"Crispy shallot and spring onion", price:"£4.90", options:[]},
+    {name:"Tempura King Prawn", description:"Pickled fennel, sweet chilli and mint sauce", price:"£4.90", options:[]},
+    {name:"Deep Fried Tofu", description:"Kimchi, mushrooms and sriracha sauce", price:"£4.90", options:[]}
   ]},
-  {name:"Chef Specials", items:[
+  {name:"Aromatic Shredded Duck", note:"Comes with cucumber, spring onion, plum & chilli sauce and hoisin sauce.", items:[
+    {name:"Steamed Buns", description:"Quarter / Half", price:"£14.50 / £25.00", options:[]},
+    {name:"Pancakes", description:"Quarter / Half", price:"£10.90 / £19.90", options:[]}
+  ]},
+  {name:"Rice Chef Specials", items:[
     {name:"Roast Pork Two Ways", description:"Pork belly & char siu on blanched Chinese leaf, and sweet soy", price:"£10.50", options:[]},
-    {name:"Roast Duck with Plum & Chilli Sauce", description:"Roast duck topped with sweet soy on blanched Chinese leaf", price:"£11", options:[]},
-    {name:"Deep Fried Tofu in Satay/Sichuan", description:"With vegetables and steamed rice", price:"£11", options:[]},
-    {name:"Red Coconut Curry", description:"Spicy red coconut curry and vegetables with lime wedge and mango sauce — Vegetarian or with Chicken", price:"£9.90 / £11", options:[]},
+    {name:"Roast Duck with Plum & Chilli Sauce", description:"Roast duck topped with sweet soy on blanched Chinese leaf", price:"£11.00", options:[]},
+    {name:"Deep Fried Tofu in Satay/Sichuan", description:"With vegetables and steamed rice", price:"£11.00", options:[]},
+    {name:"Red Coconut Curry — Veg", description:"Spicy red coconut curry and vegetables with lime wedge and mango sauce", price:"£9.90", options:[]},
+    {name:"Red Coconut Curry — Chicken", description:"Spicy red coconut curry and vegetables with chicken", price:"£11.00", options:[]},
     {name:"Grilled Chilli Beef Rice", description:"Sliced flank steak (served pink), on kimchi rice with Chinese greens and a chilli & sake sauce", price:"£16.50", options:[]},
     {name:"Chicken Pancetta Fried Rice", description:"Smoked pancetta & chicken topped with a fried egg and nori", price:"£9.50", options:[]},
-    {name:"Golden Duck Fried Rice", description:"Roast duck on fried rice with Chinese sausage, and shitake mushroom", price:"£15.50", options:[]},
-    {name:"Kimchi Fried Rice", description:"Kimchi, shitake mushrooms, fried rice, topped with a fried egg, nori, and toasted sesame", price:"£9.50", options:[]}
+    {name:"Golden Duck Fried Rice", description:"Roast duck on fried rice with Chinese sausage and shiitake mushroom", price:"£15.50", options:[]},
+    {name:"Kimchi Fried Rice", description:"Kimchi, shiitake mushrooms, fried rice, topped with a fried egg, nori and toasted sesame", price:"£9.50", options:[]}
   ]},
   {name:"Noodle Chef Specials", items:[
-    {name:"Pork Ramen", description:"Roasted pork belly, kimchi, boiled egg, spring onions, and nori, on ramen noodles with a pork & chicken broth", price:"£13.90", options:[]},
-    {name:"Spicy Beef Ramen", description:"With a chilli broth, broccoli and spring onions", price:"£13.90", options:[]},
-    {name:"Teriyaki Salmon", description:"Salmon fillet, king prawns, and stir fried vegetables on top of soba noodles in a teriyaki sauce", price:"£16", options:[]},
-    {name:"Chilli Beef Noodles", description:"Sliced flank steak (served pink), on stir fried egg noodles with Chinese greens and a chilli & sake sauce", price:"£16.50", options:[]},
-    {name:"Singapore Noodles", description:"Stir fried rice noodles with either vegetables, mango sauce, and lime wedge or mixed meat", price:"£8.90 / £9.50", options:[]},
-    {name:"Honey Sriracha Chicken Noodles", description:"Honey stir fried chicken and vegetable chow mein with sriracha sauce", price:"£9.50", options:[]},
-    {name:"Chow Mein", description:"Chicken | Beef | Char Siu, stir fried egg noodles with vegetables", price:"£8.90", options:[]},
-    {name:"King Prawn Chow Mein", description:"Stir fried egg noodles with vegetables and king prawns", price:"£9.50", options:[]}
+    {name:"Pork Ramen", description:"Roasted pork belly, kimchi, boiled egg, spring onions and nori on ramen noodles with a pork & chicken broth", price:"£13.90", options:[]},
+    {name:"Spicy Beef Ramen", description:"Chilli broth, broccoli and spring onions", price:"£13.90", options:[]},
+    {name:"Teriyaki Salmon", description:"Salmon fillet, king prawns and stir-fried vegetables on top of soba noodles in a teriyaki sauce", price:"£16.00", options:[]},
+    {name:"Chilli Beef Noodles", description:"Sliced flank steak (served pink), on stir-fried egg noodles with Chinese greens and a chilli & sake sauce", price:"£16.50", options:[]},
+    {name:"Singapore Noodles — Veg", description:"Stir-fried rice noodles with vegetables, mango sauce and lime wedge", price:"£8.90", options:[]},
+    {name:"Singapore Noodles — Mixed Meat", description:"Stir-fried rice noodles with mixed meat", price:"£9.50", options:[]},
+    {name:"Honey Sriracha Chicken Noodles", description:"Honey stir-fried chicken and vegetable chow mein with sriracha sauce", price:"£9.50", options:[]},
+    {name:"Chow Mein — Chicken", description:"Stir-fried egg noodles with vegetables and chicken", price:"£8.90", options:[]},
+    {name:"Chow Mein — Beef", description:"Stir-fried egg noodles with vegetables and beef", price:"£8.90", options:[]},
+    {name:"Chow Mein — Char Siu", description:"Stir-fried egg noodles with vegetables and char siu", price:"£8.90", options:[]},
+    {name:"King Prawn Chow Mein", description:"Stir-fried egg noodles with vegetables and king prawns", price:"£9.50", options:[]}
   ]},
-  {name:"Rice Dishes", items:[
-    {name:"Special Fried Rice", description:"", price:"£7.80", options:[]},
-    {name:"Chicken Fried Rice", description:"", price:"£7.50", options:[]},
-    {name:"Char Siu Fried Rice", description:"", price:"£7.50", options:[]},
-    {name:"Beef Fried Rice", description:"", price:"£7.50", options:[]},
-    {name:"Singapore Fried Rice", description:"", price:"£8.20", options:[]},
-    {name:"Mixed Veg Fried Rice", description:"", price:"£7.50", options:[]},
-    {name:"King Prawn Rice", description:"", price:"£8.50", options:[]}
-  ]},
-  {name:"Classics", note:"Please let your server know of any allergies or intolerances.", items:[
-    {name:"Crispy Chicken or Crispy Pork", description:"", price:"£8.20", options:["Curry","Kung Po","Sweet & Sour","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay","Garlic Butter","Lemon","Orange"]},
-    {name:"Crispy Beef", description:"", price:"£8.30", options:["Curry","Kung Po","Sweet & Sour","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan"]},
+  {name:"Classic Dishes", note:"Please let us know of any food allergies or intolerances before ordering.", items:[
     {name:"Chicken or Pork", description:"Also available with English mushrooms", price:"£7.90", options:["Curry","Black Bean","Spring Onion & Oyster","Sichuan","Satay"]},
-    {name:"Beef", description:"", price:"£8.30", options:["Curry","Black Bean","Spring Onion & Oyster","Sichuan","Satay"]}
+    {name:"Beef", description:"Also available with English mushrooms", price:"£7.90", options:["Curry","Black Bean","Spring Onion & Oyster","Sichuan","Satay"]},
+    {name:"Duck", description:"Additional option: Roast Duck with BBQ Pork — £8.50", price:"£7.90", options:["Curry","Black Bean","Sichuan","Satay","Orange"]},
+    {name:"King Prawns", description:"", price:"£8.20", options:["Curry","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay"]},
+    {name:"Crispy Chicken or Crispy Pork", description:"", price:"£8.20", options:["Curry","Kung Po","Sweet & Sour","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay","Garlic Butter","Lemon","Orange"]},
+    {name:"Crispy Beef", description:"", price:"£8.30", options:["Curry","Kung Po","Sweet & Sour","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan"]}
   ]},
   {name:"Seafood", items:[
     {name:"Salt & Chilli Fried Scallops", description:"", price:"£11.90", options:[]},
@@ -397,6 +395,15 @@ export const takeawayMenu = {title:"Takeaway", sections:[
     {name:"Fried Squid in Sweet & Sour Sauce", description:"", price:"£9.50", options:[]},
     {name:"Squid in Ginger, Spring Onion & Oyster Sauce", description:"", price:"£9.50", options:[]},
     {name:"Squid in Sichuan Sauce", description:"", price:"£9.50", options:[]}
+  ]},
+  {name:"Rice Dishes", items:[
+    {name:"Special Fried Rice", description:"", price:"£7.80", options:[]},
+    {name:"Chicken Fried Rice", description:"", price:"£7.50", options:[]},
+    {name:"Char Siu Fried Rice", description:"", price:"£7.50", options:[]},
+    {name:"Beef Fried Rice", description:"", price:"£7.50", options:[]},
+    {name:"Singapore Fried Rice", description:"", price:"£8.20", options:[]},
+    {name:"Mixed Veg Fried Rice", description:"", price:"£7.50", options:[]},
+    {name:"King Prawn Rice", description:"", price:"£8.50", options:[]}
   ]},
   {name:"Sides", items:[
     {name:"Steamed Rice", description:"", price:"£3.00", options:[]},
