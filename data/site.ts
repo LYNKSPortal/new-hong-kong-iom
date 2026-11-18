@@ -71,126 +71,136 @@ export const dishes = [
 export const menus = [{ title:"Main Menu", description:"The dishes we are known for, from dim sum to wok-fired signatures.", updated:"May 2026", slug:"main-menu", pdf:"/Menus/New Hong Kong - Classics and Specials Menus.pdf" }, { title:"Lunch & Drinks", description:"Easy afternoons, bright plates and a considered drinks list.", updated:"May 2026", slug:"lunch-drinks", pdf:"/Menus/New Hong Kong - Lunch Drinks Menu.pdf" }, { title:"Takeaway", description:"Your New Hong Kong favourites, ready for collection.", updated:"May 2026", slug:"takeaway", pdf:"/Menus/New Hong Kong - Take Away Menu.pdf" }];
 
 export const mainMenu = {title:"Main Menu", sections:[
-  {name:"Soups", items:[
-    {name:"Chicken & Sweetcorn", description:"", price:"£5", options:[]},
-    {name:"Kimchi Rice & Salted Pork", description:"", price:"£5.50", options:[]},
-    {name:"Hot & Sour", description:"Vegetarian | Meat", price:"£5 / £5.50", options:[]},
-    {name:"Wonton Soup", description:"", price:"£5.50", options:[]}
+  {name:"Steamed Bao", note:"£5.50 each. The kitchen works in a high-gluten environment and cannot guarantee that food leaving the kitchen is 100% gluten-free — please let your server know of any food sensitivities before ordering. Warning: some dishes may contain bones.", items:[
+    {name:"Crispy Chicken", description:"Crispy fried chicken, coriander, pickled carrot, wasabi", price:"£5.50", options:[]},
+    {name:"Pork Belly", description:"Slices of pork belly, pickled cucumber, caramelised peanut, hoisin sauce", price:"£5.50", options:[]},
+    {name:"Tempura King Prawn", description:"Crispy king prawn, sweet chilli & mint sauce, pickled fennel", price:"£5.50", options:[]},
+    {name:"Char Siu", description:"Char siu, crispy fried shallot, spring onion", price:"£5.50", options:[]},
+    {name:"Deep Fried Tofu", description:"Fried tofu, kimchi, hot sriracha sauce, spring onion", price:"£5.50", options:[]}
   ]},
-  {name:"Small Bites", note:"Prices below are indicative; portion sizes and add-ons may vary.", items:[
-    {name:"Mixed Starter", description:"For two people: mini spring rolls, fried chicken wings, chicken skewers, barbeque ribs, and edamame", price:"£16.50", options:[]},
-    {name:"Edamame", description:"Wok fried in soy sauce & chilli, topped with toasted sesame seeds", price:"£6", options:[]},
-    {name:"Mini Spring Rolls", description:"With a sweet chilli and mint dip", price:"£6", options:[]},
-    {name:"Spring Rolls", description:"With a sweet chilli and mint dip", price:"£6", options:[]},
-    {name:"Sichuan Dumplings", description:"In a soy, black vinegar, and red oil sauce", price:"£7.90", options:[]},
+  {name:"Soups", items:[
+    {name:"Chicken & Sweetcorn", description:"", price:"£5.50", options:[]},
+    {name:"Kimchi Rice & Salted Pork", description:"", price:"£5.50", options:[]},
+    {name:"Hot & Sour", description:"Vegetarian", price:"£5.50", options:[]},
+    {name:"Hot & Sour", description:"Meat", price:"£5.90", options:[]},
+    {name:"Wonton Soup", description:"", price:"£5.90", options:[]}
+  ]},
+  {name:"Small Bites", items:[
+    {name:"Mixed Starter", description:"For two people: mini spring rolls, fried chicken wings, chicken skewers, barbecue ribs and edamame", price:"£16.50", options:[]},
+    {name:"Edamame", description:"Wok-fried in soy sauce & chilli, topped with toasted sesame seeds", price:"£6.00", options:[]},
+    {name:"Mini Spring Rolls", description:"With a sweet chilli and mint dip", price:"£6.00", options:[]},
+    {name:"Spring Rolls", description:"With a sweet chilli and mint dip", price:"£6.90", options:[]},
+    {name:"Sichuan Dumplings", description:"In a soy, black vinegar and red oil sauce", price:"£7.90", options:[]},
     {name:"Poached Wontons", description:"In a soy, black vinegar and red oil sauce", price:"£7.90", options:[]},
     {name:"Chicken Skewers", description:"Coated in a satay sauce", price:"£7.90", options:[]},
-    {name:"Fried Chicken Wings", description:"With a sweet and spicy vinaigrette", price:"£6", options:[]},
+    {name:"Fried Chicken Wings", description:"With a sweet and spicy vinaigrette", price:"£7.90", options:[]},
     {name:"BBQ Pork Ribs", description:"In a sweet & sour sauce", price:"£7.90", options:[]},
     {name:"Salt & Chilli Pork Ribs", description:"Topped with golden syrup", price:"£7.90", options:[]},
-    {name:"Salt & Chilli Crispy Chicken", description:"Wok fried with onions and dried chillies", price:"£7.90", options:[]},
-    {name:"Salt & Chilli Chicken Wings", description:"Wok fried with onions and dried chillies", price:"£6", options:[]},
-    {name:"Prawn Toast", description:"With a sweet chilli and mint dip", price:"£6", options:[]},
-    {name:"Salt & Chilli King Prawn", description:"Wok fried with onions and dried chillies", price:"£8.90", options:[]}
+    {name:"Salt & Chilli Crispy Chicken", description:"Wok-fried with onions and dried chillies", price:"£7.90", options:[]},
+    {name:"Salt & Chilli Chicken Wings", description:"Wok-fried with onions and dried chillies", price:"£7.90", options:[]},
+    {name:"Prawn Toast", description:"With a sweet chilli and mint dip", price:"£9.20", options:[]},
+    {name:"Salt & Chilli King Prawn", description:"Wok-fried with onions and dried chillies", price:"£8.90", options:[]}
   ]},
-  {name:"Aromatic Shredded Duck", note:"Comes in either a ¼ portion with 3 buns/pancakes or a ½ portion with 6, served with cucumber, spring onion, and hoisin sauce.", items:[
-    {name:"Steamed Buns", description:"¼ portion / ½ portion", price:"£15 / £29", options:[]},
-    {name:"Pancakes", description:"¼ portion / ½ portion", price:"£13.50 / £25", options:[]}
+  {name:"Aromatic Shredded Duck", note:"Served with cucumber, spring onion and hoisin sauce. The quarter portion comes with 3 buns, the half portion with 6 buns.", items:[
+    {name:"Steamed Buns", description:"Quarter portion / Half portion", price:"£15.50 / £29.00", options:[]},
+    {name:"Pancakes", description:"Quarter portion / Half portion", price:"£13.90 / £26.00", options:[]}
   ]},
-  {name:"Steamed Bao Starters", note:"£5.50 each. Please let your server know of any food sensitivities before you place your order — while we take the utmost care, we cannot guarantee any dish leaving our kitchen is 100% gluten free.", items:[
-    {name:"Crispy Chicken", description:"Pickled carrot, coriander, and wasabi mayo", price:"£5.50", options:[]},
-    {name:"Pork Belly", description:"Pickled cucumber, hoisin sauce, and crushed peanuts", price:"£5.50", options:[]},
-    {name:"Tempura King Prawn", description:"Pickled fennel, sweet chilli & mint sauce", price:"£5.50", options:[]},
-    {name:"Deep Fried Tofu", description:"Kimchi, mushrooms, and sriracha sauce", price:"£5.50", options:[]},
-    {name:"Char Siu", description:"Crispy shallot & spring onion", price:"£5.50", options:[]}
-  ]},
-  {name:"Sides", items:[
-    {name:"Steamed Rice", description:"", price:"£3", options:[]},
-    {name:"Fried Rice", description:"", price:"£4", options:[]},
-    {name:"Chips", description:"", price:"£3", options:[]},
-    {name:"Egg Noodles", description:"", price:"£4", options:[]},
-    {name:"Rice Noodles", description:"", price:"£4", options:[]},
-    {name:"Salt & Chilli Chips", description:"", price:"£6", options:[]},
-    {name:"English Mushrooms", description:"", price:"£6", options:[]},
-    {name:"Broccoli & Garlic", description:"", price:"£6", options:[]},
-    {name:"Chinese Greens", description:"", price:"£6", options:[]},
-    {name:"Kimchi", description:"", price:"£3", options:[]},
-    {name:"Sauce", description:"Curry, Sweet & Sour, etc.", price:"£2", options:[]},
-    {name:"Prawn Crackers", description:"", price:"£2", options:[]}
-  ]},
-  {name:"Classics", note:"Please let your server know of any allergies or intolerances. Warning: some dishes may contain bones.", items:[
-    {name:"Roast Duck", description:"Add BBQ pork for +£1.50", price:"£12", options:["Curry","Black Bean","Sichuan","Satay","Orange"]},
-    {name:"Crispy Beef", description:"", price:"£12", options:["Chilli Beef","Curry","Sweet & Sour","Kung Po","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay"]},
-    {name:"Beef", description:"", price:"£11.90", options:["Curry","Black Bean","Spring Onion & Oyster","Sichuan","Satay"]},
-    {name:"Chicken or Pork", description:"", price:"£11.50", options:["Curry","Black Bean","Spring Onion & Oyster","Sichuan","Satay"]},
-    {name:"Crispy Chicken or Crispy Pork", description:"Also available: Salt & Chilli Chicken (Crispy) — £12", price:"£12", options:["Curry","Sweet & Sour","Kung Po","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay","Garlic","Lemon","Orange"]},
-    {name:"King Prawn", description:"Also available: Salt & Chilli King Prawn — £12", price:"£12", options:["Curry","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay"]}
+  {name:"Classics", note:"Dietary indicators: green = vegetarian / can be made vegetarian, red chilli = spicy, multiple red chillies = higher spiciness. Please let your server know of any allergies or intolerances.", items:[
+    {name:"Chicken or Pork", description:"", price:"£11.90", options:["Curry","Black Bean","Spring Onion & Oyster","Sichuan","Satay"]},
+    {name:"Beef", description:"", price:"£12.90", options:["Curry","Black Bean","Spring Onion & Oyster","Sichuan","Satay"]},
+    {name:"Crispy Chicken or Crispy Pork", description:"Also available: Salt & Chilli Chicken (Crispy)", price:"£12.90", options:["Curry","Sweet & Sour","Kung Po","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay","Garlic","Lemon","Orange"]},
+    {name:"Crispy Beef", description:"", price:"£13.50", options:["Chilli Beef","Curry","Sweet & Sour","Kung Po","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay"]},
+    {name:"King Prawn", description:"Also available: Salt & Chilli King Prawn", price:"£13.50", options:["Curry","Black Bean","Black Pepper","Spring Onion & Oyster","Sichuan","Satay"]},
+    {name:"Roast Duck", description:"Extra option: with BBQ pork +£1.50", price:"£12.90", options:["Curry","Black Bean","Sichuan","Satay","Orange"]}
   ]},
   {name:"Seafood", items:[
     {name:"Salt & Chilli Scallops", description:"", price:"£15.50", options:[]},
     {name:"Scallops in Oyster Sauce", description:"", price:"£15.50", options:[]},
     {name:"Scallops in Garlic Sauce", description:"", price:"£15.50", options:[]},
-    {name:"Salt & Chilli Squid", description:"", price:"£14", options:[]},
-    {name:"Fried Squid in Sweet & Sour Sauce", description:"", price:"£14", options:[]},
-    {name:"Squid in Black Bean Sauce", description:"", price:"£14", options:[]},
-    {name:"Squid in Ginger & Oyster Sauce", description:"", price:"£14", options:[]},
-    {name:"Squid in Sichuan Sauce", description:"", price:"£14", options:[]},
-    {name:"Chopped Chilli", description:"Optional extra", price:"£1", options:[]}
+    {name:"Salt & Chilli Squid", description:"", price:"£14.90", options:[]},
+    {name:"Fried Squid in Sweet & Sour Sauce", description:"", price:"£14.90", options:[]},
+    {name:"Squid in Black Bean Sauce", description:"", price:"£14.90", options:[]},
+    {name:"Squid in Ginger & Oyster Sauce", description:"", price:"£14.90", options:[]},
+    {name:"Squid in Sichuan Sauce", description:"", price:"£14.90", options:[]}
   ]},
-  {name:"Chef Specials", items:[
+  {name:"Sides", items:[
+    {name:"Steamed Rice", description:"", price:"£3.50", options:[]},
+    {name:"Fried Rice", description:"", price:"£3.50", options:[]},
+    {name:"Chips", description:"", price:"£3.50", options:[]},
+    {name:"Egg Noodles", description:"", price:"£6.50", options:[]},
+    {name:"Rice Noodles", description:"", price:"£6.50", options:[]},
+    {name:"Salt & Chilli Chips", description:"", price:"£4.80", options:[]},
+    {name:"English Mushrooms", description:"", price:"£4.80", options:[]},
+    {name:"Broccoli & Garlic", description:"", price:"£6.90", options:[]},
+    {name:"Chinese Greens", description:"", price:"£6.90", options:[]},
+    {name:"Kimchi", description:"", price:"£3.00", options:[]},
+    {name:"Sauce", description:"Curry, Sweet & Sour, etc.", price:"£2.00", options:[]},
+    {name:"Prawn Crackers", description:"", price:"£2.50", options:[]},
+    {name:"Chopped Chilli", description:"", price:"£1.00", options:[]}
+  ]},
+  {name:"Rice Dishes", items:[
     {name:"Roast Pork Two Ways", description:"Pork belly & char siu on blanched Chinese leaf, and sweet soy", price:"£13.50", options:[]},
-    {name:"Roast Duck with Plum & Chilli Sauce", description:"Topped with sweet soy and sesame oil on blanched Chinese leaf", price:"£13.50", options:[]},
-    {name:"Deep Fried Tofu", description:"Satay or Sichuan, with vegetables and steamed rice", price:"£13", options:[]},
-    {name:"Red Coconut Curry", description:"Spicy red coconut curry and vegetables — Vegetarian or with Chicken", price:"£12 / £13", options:[]},
-    {name:"Grilled Chilli Beef Rice", description:"Sliced flank steak on kimchi rice with Chinese greens and a chilli & sake sauce", price:"£19.50", options:[]},
-    {name:"Chicken Pancetta", description:"Smoked pancetta & chicken, topped with a fried egg and nori", price:"£12.50", options:[]},
-    {name:"Golden Duck Fried Rice", description:"Roast duck on fried rice with Chinese sausage, and shitake mushroom", price:"£16", options:[]},
-    {name:"Kimchi Fried Rice", description:"Kimchi, shitake mushrooms, wakame seaweed fried rice topped with a fried egg, nori, and toasted sesame", price:"£12.50", options:[]}
+    {name:"Roast Duck with Plum & Chilli Sauce", description:"Roast duck topped with sweet soy and sesame oil on blanched Chinese leaf", price:"£13.90", options:[]},
+    {name:"Deep Fried Tofu", description:"Satay or Sichuan, with vegetables and steamed rice", price:"£13.90", options:[]},
+    {name:"Red Coconut Curry", description:"Spicy red coconut curry and vegetables — Vegetarian", price:"£12.50", options:[]},
+    {name:"Red Coconut Curry", description:"Spicy red coconut curry and vegetables with chicken", price:"£13.90", options:[]},
+    {name:"Grilled Chilli Beef Rice", description:"Sliced flank steak on kimchi rice with Chinese greens and a chilli & sake sauce", price:"£21.50", options:[]},
+    {name:"Chicken Pancetta", description:"Smoked pancetta & chicken, topped with a fried egg and nori", price:"£13.90", options:[]},
+    {name:"Golden Duck Fried Rice", description:"Roast duck on fried rice with Chinese sausage and shiitake mushroom", price:"£17.50", options:[]},
+    {name:"Kimchi Fried Rice", description:"Kimchi, shiitake mushrooms, fried rice topped with a fried egg, nori and toasted sesame", price:"£13.90", options:[]}
   ]},
   {name:"Noodle Dishes", items:[
-    {name:"Pork Ramen", description:"Roasted pork belly, kimchi, soft boiled egg, spring onions, and nori on ramen noodles with a pork and chicken broth", price:"£15", options:[]},
-    {name:"Power Up Pork Ramen", description:"Doubled up Pork Ramen, with char siu, and crispy shallots — for big appetites", price:"£16", options:[]},
-    {name:"Roast Duck Ramen", description:"Roast duck, pickled fennel, and ramen noodles in a pork and chicken broth", price:"£18.50", options:[]},
-    {name:"Malaysian Laksa Noodles", description:"King prawns, deep fried tofu, fish balls, crunchy beansprouts, and soft boiled egg, in a creamy coconut curry", price:"£19.50", options:[]},
-    {name:"Teriyaki Salmon", description:"Salmon fillet, king prawns, and stir fried vegetables on top of soba noodles in a teriyaki sauce", price:"£16.50", options:[]},
-    {name:"Chilli Beef Noodles", description:"Sliced flank steak on stir fried egg noodles with Chinese greens, and a chilli & sake sauce", price:"£16.50", options:[]},
-    {name:"Singapore Noodles Veg", description:"Stir fried rice noodles with vegetables, mango sauce, and a lime wedge", price:"£12", options:[]},
-    {name:"Singapore Noodles Mixed Meat", description:"Stir fried rice noodles with king prawns, char siu, and chicken", price:"£14", options:[]},
-    {name:"Honey Sriracha Chicken Noodles", description:"Honey stir fried chicken and vegetable chow mein with sriracha sauce", price:"£13", options:[]},
-    {name:"Chow Mein", description:"Choice of chicken, beef, or char siu, stir fried in egg noodles with vegetables", price:"£13", options:[]},
-    {name:"King Prawn Chow Mein", description:"Stir fried in egg noodles with vegetables", price:"£14", options:[]}
+    {name:"Pork Ramen", description:"Roasted pork belly, kimchi, soft-boiled egg, spring onions and nori on ramen noodles with a pork and chicken broth", price:"£16.00", options:[]},
+    {name:"Power Up Pork Ramen", description:"Doubled-up pork ramen, with char siu and crispy shallots — for big appetites", price:"£17.50", options:[]},
+    {name:"Roast Duck Ramen", description:"Roast duck, pickled fennel and ramen noodles in a pork and chicken broth", price:"£17.50", options:[]},
+    {name:"Malaysian Laksa Noodles", description:"King prawns, deep-fried tofu, fish balls, crunchy beansprouts and soft-boiled egg in a creamy coconut curry", price:"£17.50", options:[]},
+    {name:"Teriyaki Salmon", description:"Salmon fillet, king prawns and stir-fried vegetables on top of soba noodles in a teriyaki sauce", price:"£19.50", options:[]},
+    {name:"Chilli Beef Noodles", description:"Sliced flank steak on stir-fried egg noodles with Chinese greens and a chilli & sake sauce", price:"£21.50", options:[]},
+    {name:"Singapore Noodles Veg", description:"Stir-fried rice noodles with vegetables, mango sauce and a lime wedge", price:"£13.50", options:[]},
+    {name:"Singapore Noodles Mixed Meat", description:"Stir-fried rice noodles with king prawns, char siu and chicken", price:"£15.50", options:[]},
+    {name:"Honey Sriracha Chicken Noodles", description:"Honey stir-fried chicken and vegetable chow mein with sriracha sauce", price:"£13.90", options:[]},
+    {name:"Chow Mein", description:"Stir-fried egg noodles with vegetables and chicken", price:"£13.50", options:[]},
+    {name:"Chow Mein", description:"Stir-fried egg noodles with vegetables and beef", price:"£13.50", options:[]},
+    {name:"Chow Mein", description:"Stir-fried egg noodles with vegetables and char siu", price:"£13.50", options:[]},
+    {name:"King Prawn Chow Mein", description:"Stir-fried egg noodles with vegetables and king prawns", price:"£14.50", options:[]}
   ]},
   {name:"Desserts", items:[
-    {name:"Fried Bao Ice Cream", description:"Choose any ice cream", price:"£4.50", options:[]},
-    {name:"Banana Fritters", description:"", price:"£5.50", options:[]},
-    {name:"Ice Cream", description:"Just ask! Priced per scoop", price:"£1.70", options:[]},
-    {name:"Dessert of the Day", description:"", price:"£7", options:[]}
+    {name:"Dessert of the Day", description:"Feel free to ask us for the dessert of the day", price:"£7.50", options:[]},
+    {name:"Banana Fritters", description:"Battered banana pieces, topped with golden syrup, served with a scoop of vanilla ice cream", price:"£5.50", options:[]},
+    {name:"Ice Cream", description:"Vanilla, strawberry, chocolate and flavour of the month — just ask. Priced per scoop", price:"£1.70", options:[]},
+    {name:"Fried Bao Ice Cream", description:"Choose any ice cream filling in a delicious crispy bao", price:"£4.50", options:[]}
   ]},
-  {name:"Wine", items:[
-    {name:"Montepulciano", description:"Red · Italy · 12.5% ABV · dark ruby-red wine with a characteristic fragrance", price:"Bottle £20", options:[]},
-    {name:"Merlot", description:"Red · Chile · 12.5% ABV · velvety textures, an ideal partner for red meat and pork dishes", price:"175ml £5.90 / 250ml £6 / Bottle £20", options:[]},
-    {name:"Malbec", description:"Red · 13.5% ABV · red fruit wine with black pepper, tannins with medium intensity", price:"Bottle £24", options:[]},
-    {name:"Rioja", description:"Red · 13.5% ABV · ruby red wine, well structured and balanced", price:"Bottle £26", options:[]},
-    {name:"White Zinfandel", description:"Rosé · USA · 10.5% ABV", price:"250ml £6 / Bottle £20", options:[]},
-    {name:"Pinot Grigio Blush", description:"Rosé · 12.0% ABV", price:"Bottle £24", options:[]},
-    {name:"Chardonnay", description:"White · Australia · 13.0% ABV · bright yellow with greenish hues, a fresh fruit aroma", price:"175ml £5", options:[]},
-    {name:"Sauvignon Blanc", description:"White · Chile · 12.0% ABV · light, fresh and crisp with hints of citrus and gooseberry", price:"175ml £6.90 / Bottle £20", options:[]},
-    {name:"Pinot Grigio", description:"White · 12.0% ABV", price:"Bottle £24", options:[]},
-    {name:"Viognier", description:"White · France · 13.5% ABV · apricots, honey and tropical fruits, fruity and persistent", price:"Bottle £26", options:[]},
-    {name:"Prosecco", description:"Sparkling · 11.0% ABV", price:"75cl Bottle £23", options:[]},
-    {name:"House Champagne", description:"Sparkling · France · 12.0% ABV · light and fresh, youthful", price:"75cl Bottle £36", options:[]},
-    {name:"Le Contesse Prosecchino", description:"Sparkling · 11.0% ABV", price:"20cl Bottle £6.90", options:[]},
-    {name:"Pinot Rosé Brut Sparkling", description:"Sparkling · 11.0% ABV", price:"20cl Bottle £6.90", options:[]}
-  ]},
-  {name:"Beer & Cider", items:[
+  {name:"Beer & Cider", note:"The source menu labels alcohol percentages as AVB; these are presented as ABV for readability.", items:[
     {name:"Tsing Tao", description:"China · 4.70% ABV", price:"£3.90", options:[]},
-    {name:"Asahi", description:"5.00% ABV", price:"£3.90", options:[]},
-    {name:"Tiger Lager", description:"4.80% ABV", price:"£3.90", options:[]},
-    {name:"Hitachino Nest White Ale", description:"5.00% ABV", price:"£6.00", options:[]},
-    {name:"Peroni (gluten free)", description:"5.10% ABV", price:"£4.50", options:[]},
-    {name:"Krombacher (low alcohol)", description:"0.00% ABV", price:"£3.90", options:[]},
-    {name:"Samuel Smith Cider", description:"UK · 4.00% ABV · 550ml", price:"£5.50", options:[]},
-    {name:"Rekorderlig Wild Berries Cider", description:"Sweden · 4.50% ABV · 500ml", price:"£4.50", options:[]}
+    {name:"Asahi", description:"Beer · 5.00% ABV", price:"£3.90", options:[]},
+    {name:"Tiger", description:"Lager · 4.80% ABV", price:"£3.90", options:[]},
+    {name:"Hitachino Nest", description:"White Ale · 5.00% ABV", price:"£6.00", options:[]},
+    {name:"Peroni", description:"Gluten free · 5.10% ABV", price:"£4.50", options:[]},
+    {name:"Krombacher", description:"Low alcohol · 0.0% ABV", price:"£3.90", options:[]},
+    {name:"Samuel Smith", description:"Cider · UK · 4.00% ABV · 550ml", price:"£5.50", options:[]},
+    {name:"Rekorderlig Wild Berries", description:"Cider · Sweden · 4.50% ABV · 500ml", price:"£4.50", options:[]}
+  ]},
+  {name:"Red Wine", items:[
+    {name:"Montepulciano", description:"12.5% ABV · Dark ruby-red wine with a characteristic fragrance", price:"175ml £5.90 / 250ml £6.90 / Bottle £20", options:[]},
+    {name:"Merlot", description:"12.5% ABV · The velvety textures of this wine make it an ideal partner for red meat and pork dishes", price:"175ml £5.90 / 250ml £6.90 / Bottle £20", options:[]},
+    {name:"Malbec", description:"13.5% ABV · Red fruit wine with black pepper, tannins with medium intensity", price:"Bottle £24", options:[]},
+    {name:"Rioja", description:"13.5% ABV · Ruby red wine, well structured and balanced", price:"Bottle £26", options:[]}
+  ]},
+  {name:"Rosé Wine", items:[
+    {name:"White Zinfandel", description:"USA · 10.5% ABV", price:"175ml £5.90 / 250ml £6.90 / Bottle £20", options:[]},
+    {name:"Pinot Grigio Blush", description:"12.0% ABV", price:"Bottle £24", options:[]}
+  ]},
+  {name:"White Wine", items:[
+    {name:"Chardonnay", description:"13.0% ABV · Bright yellow with greenish hues in colour, with a fresh fruit aroma", price:"175ml £5.90 / 250ml £6.90 / Bottle £20", options:[]},
+    {name:"Sauvignon Blanc", description:"12.0% ABV · A light, fresh and crisp dry white wine with hints of citrus and gooseberry on the palate", price:"175ml £5.90 / 250ml £6.90 / Bottle £20", options:[]},
+    {name:"Pinot Grigio", description:"12.0% ABV", price:"Bottle £24", options:[]},
+    {name:"Viognier", description:"France · 13.5% ABV · Apricots, honey and tropical fruits — fruity and persistent", price:"Bottle £26", options:[]}
+  ]},
+  {name:"Sparkling Wine & Champagne", items:[
+    {name:"Prosecco", description:"11.0% ABV", price:"75cl Bottle £23", options:[]},
+    {name:"House Champagne", description:"France · 12.0% ABV · Light and fresh, youthful Champagne", price:"75cl Bottle £36", options:[]},
+    {name:"Le Contesse Prosecchino", description:"11.0% ABV", price:"20cl Bottle £6.90", options:[]},
+    {name:"Pinot Rosé Brut Sparkling", description:"11.0% ABV", price:"20cl Bottle £6.90", options:[]}
   ]}
 ]};
 
