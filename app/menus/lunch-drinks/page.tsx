@@ -26,12 +26,12 @@ export default function LunchDrinksMenu() {
               {section.note && <p className="mt-2 text-sm text-black/60">{section.note}</p>}
               <ul className="mt-6 space-y-4">
                 {section.items.map((item, i) => (
-                  <li key={`${item.name}-${i}`} className="flex items-start justify-between gap-4 border-b border-brand-neutral pb-4">
+                  <li key={`${item.name}-${i}`} className="flex flex-col gap-1 border-b border-brand-neutral pb-4 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                     <div>
                       <p className="font-semibold">{item.name}</p>
                       {item.description && <p className="mt-1 text-sm text-black/60">{item.description}</p>}
                     </div>
-                    {item.price && <p className="shrink-0 font-semibold text-brand-red">{item.price}</p>}
+                    {item.price && <p className="font-semibold text-brand-red sm:shrink-0">{item.price}</p>}
                   </li>
                 ))}
               </ul>
